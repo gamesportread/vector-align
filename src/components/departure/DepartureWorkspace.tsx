@@ -201,7 +201,8 @@ export function DepartureWorkspace({
     };
 
     const loop = (now: number) => {
-      const dtReal = Math.min(0.1, (now - last) / 1000);
+      const dtRaw = Math.max(0, (now - last) / 1000);
+      const dtReal = Math.min(0.1, dtRaw);
       last = now;
       const rt = runtimeRef.current;
 
@@ -246,7 +247,7 @@ export function DepartureWorkspace({
           const nextProg = stepNoseconeServo(
             rt.state.noseconeProgress,
             rt.state.noseconeClosed,
-            dtReal
+            dtRaw
           );
           rt.state = { ...rt.state, noseconeProgress: nextProg };
           if (nextProg === target || now - publish > 35) {
