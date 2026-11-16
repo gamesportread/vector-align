@@ -54,3 +54,7 @@ scripts/build_dragon_v2.py
 AGENTS.md
 CLAUDE.md
 *.pptx
+
+# Demo video capture intermediates (final MP4 is committed)
+demo/frames/
+demo/frames.txt
