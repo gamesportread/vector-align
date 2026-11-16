@@ -77,5 +77,6 @@ In accordance with NASA Space Apps Challenge transparency guidelines:
 
 - **Code, Documentation & Translation**: Large Language Model (LLM) assistants were used during development to assist with coding, debugging, refactoring, documentation, and multilingual UI text translation (`src/i18n/messages.ts`).
 - **Data / Texture Preprocessing**: `scripts/generate-earth-patch.py` uses the pre-trained `FSRCNN_x4` TensorFlow super-resolution model (`Saafke/FSRCNN_Tensorflow`) to upscale a regional crop of the NASA Earth Observatory Blue Marble base map into `public/textures/earth_patch_4096.jpg`.
+- **Panorama Background Illustrations**: The four stylized 360° sky-dome background images in `public/images/home/toon/` (`liftoff.jpg`, `docking.jpg`, `departure.jpg`, `landing.jpg`) were generated with AI image tools and carry a visible `AI-Generated (SI)` watermark.
 - **Runtime Simulation & Audio**: All orbital, ascent, departure, and reentry physics run deterministically without runtime AI/ML inference, and launch soundscapes (`src/components/liftoff/liftoffAudio.ts`) are synthesized procedurally via the Web Audio API.
 - **Non-Endorsement**: This is an independent educational project. NASA does not endorse it.
