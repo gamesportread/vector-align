@@ -1,0 +1,2116 @@
+/* ==========================================================================
+   Simulator Control Deck · Cel-Shaded Anime Theme (matching home.css)
+   Ink stroke borders + Flat color fills + Hard drop shadows + Screentone paper texture
+   Loaded as top overlay stylesheet, scoped under .app-shell.
+   ========================================================================== */
+
+.app-shell {
+  --toon-ink: #0b1030;
+  --toon-ink-2: #141a45;
+  --toon-ink-3: #1d2560;
+  --toon-ink-soft: #2a3160;
+  --toon-paper: #fff8ea;
+  --toon-paper-2: #f3e9d2;
+  --toon-paper-3: #e7dbc0;
+  --toon-red: #fc3d21;
+  --toon-red-dark: #c42a12;
+  --toon-blue: #0b3d91;
+  --toon-sky: #44c8ff;
+  --toon-sun: #ffcf3f;
+  --toon-sun-dark: #e6a90f;
+  --toon-text: #1b2148;
+  --toon-text-soft: #4a5078;
+  --toon-font: "Avenir Next", "Avenir", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --toon-display: "Avenir Next Condensed", "Avenir Next", "Arial Black", Impact, sans-serif;
+
+  /* Remap legacy variables: lime green -> solar yellow, gray lines -> dark blue lines */
+  --lime: var(--toon-sun);
+  --line: #000417;
+  --panel: var(--toon-ink-2);
+  --muted: #a9b0d8;
+
+  font-family: var(--toon-font);
+  color: var(--toon-paper);
+  background:
+    radial-gradient(rgba(255, 248, 234, 0.05) 1px, transparent 2.5px) 0 0 / 12px 12px,
+    linear-gradient(160deg, #141a45 0%, #0b1030 60%, #0a0d26 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* ---------- General Typography ---------- */
+.app-shell h1,
+.app-shell h2,
+.app-shell .mission-heading h1,
+.app-shell .mission-zero-header h1 {
+  font-family: var(--toon-display);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.3px;
+  color: var(--toon-paper);
+  text-shadow: 3px 3px 0 var(--toon-ink);
+}
+
+.app-shell h3 {
+  font-weight: 800;
+}
+
+.app-shell .eyebrow {
+  font-family: var(--toon-font);
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--toon-sun);
+  text-transform: uppercase;
+}
+
+.app-shell .breadcrumb,
+.app-shell .breadcrumb > span {
+  font-family: var(--toon-font);
+  font-weight: 700;
+  color: #a9b0d8;
+}
+
+.app-shell .level-pill,
+.app-shell .small-pill,
+.app-shell .mission-zero-pill,
+.app-shell .progress-pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--toon-font);
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  border: 2px solid var(--toon-ink);
+  border-radius: 3px;
+  box-shadow: 2px 2px 0 var(--toon-ink);
+  padding: 2px 8px;
+  transform: skewX(-10deg);
+  /* pills sit inside the h1, which carries a 3px ink text-shadow — don't inherit it */
+  text-shadow: none;
+  font-style: normal;
+  font-size: 11px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.app-shell button:focus-visible,
+.app-shell a:focus-visible,
+.app-shell input:focus-visible {
+  outline: 3px solid var(--toon-sun);
+  outline-offset: 3px;
+}
+
+/* ---------- Topbar: Deep ink background + Red bevel border ---------- */
+.app-shell .topbar {
+  background: var(--toon-ink);
+  border-bottom: 3px solid var(--toon-red);
+  box-shadow: 0 4px 0 #000417;
+}
+
+.app-shell .brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 8px;
+  transition: transform 0.14s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+.app-shell .brand:hover {
+  transform: translate(-1px, -1px);
+}
+
+.app-shell .brand img {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--toon-paper);
+  border-radius: 7px;
+  box-shadow: 2px 2px 0 var(--toon-red);
+}
+
+.app-shell .topbar nav {
+  gap: 16px;
+}
+
+.app-shell .topbar nav:has(.topbar-nav-divider) {
+  gap: 6px;
+}
+
+.app-shell .topbar nav .topbar-nav-divider {
+  width: 1px;
+  height: 20px;
+  align-self: center;
+  flex-shrink: 0;
+  background: rgba(255, 248, 234, 0.28);
+  margin: 0 3px;
+}
+
+.app-shell .topbar nav button {
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: #a9b0d8;
+  border-bottom-width: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (min-width: 701px) {
+  .app-shell .topbar nav:has(.topbar-nav-divider) button:not(.topbar-secondary-btn) {
+    font-size: 13px;
+    letter-spacing: 0.2px;
+    padding: 0 3px;
+  }
+
+  .app-shell .topbar nav button.topbar-secondary-btn {
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.1px;
+    padding: 0 5px;
+  }
+}
+
+.app-shell .topbar nav button:hover {
+  color: var(--toon-paper);
+}
+
+.app-shell .topbar nav button.nav-active {
+  color: var(--toon-sun);
+  border-bottom-color: var(--toon-sun);
+}
+
+.app-shell .icon-button {
+  color: var(--toon-paper);
+  border: 2px solid transparent;
+}
+
+.app-shell .icon-button:hover {
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  border-color: var(--toon-ink);
+}
+
+/* ---------- Sidebar (including lesson-rail for departure/landing) ---------- */
+.app-shell .sidebar,
+.app-shell .lesson-rail {
+  background:
+    radial-gradient(rgba(255, 248, 234, 0.05) 1px, transparent 2.5px) 0 0 / 10px 10px,
+    var(--toon-ink);
+  border-right: 3px solid #000417;
+  scrollbar-width: thin;
+  scrollbar-color: var(--toon-ink-soft) transparent;
+}
+
+.app-shell .lesson-rail {
+  position: absolute;
+  top: 54px;
+  bottom: 0;
+  width: 254px;
+  min-height: calc(100vh - 54px);
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+  z-index: 5;
+}
+
+.app-shell .rail-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.app-shell .rail-head h2 {
+  font-size: 20px;
+  line-height: 1.15;
+  margin: 6px 0 0;
+}
+
+.app-shell .sidebar-intro {
+  color: #c9cdea;
+}
+
+.app-shell .progress-caption {
+  color: #a9b0d8;
+  font-weight: 700;
+}
+
+.app-shell .progress-caption strong,
+.app-shell .progress-caption strong span {
+  color: var(--toon-paper);
+}
+
+.app-shell .progress-track > span {
+  background: var(--toon-ink-soft);
+  border: 1px solid #000417;
+  height: 6px;
+}
+
+.app-shell .progress-track .complete {
+  background: var(--toon-sun);
+}
+
+/* Level cards: Cream paper cards + ink outlines + hard shadows; NASA Red when active */
+.app-shell .mission-item,
+.app-shell .mission-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  min-height: 54px;
+  padding: 7px 10px;
+  margin-bottom: 6px;
+  color: var(--toon-text);
+  background: var(--toon-paper);
+  border: 2.5px solid var(--toon-ink);
+  border-radius: 5px;
+  box-shadow: 4px 4px 0 #000417;
+  transition: transform 0.14s cubic-bezier(0.2, 1.4, 0.4, 1), box-shadow 0.14s ease, background 0.14s ease;
+}
+
+.app-shell .mission-item:hover,
+.app-shell .mission-card:hover {
+  background: #fffdf6;
+  transform: translate(-1px, -2px);
+  box-shadow: 5px 6px 0 #000417;
+}
+
+.app-shell .mission-item:active,
+.app-shell .mission-card:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #000417;
+}
+
+.app-shell .mission-item strong,
+.app-shell .mission-card strong {
+  display: block;
+  font-weight: 800;
+  color: var(--toon-ink);
+  line-height: 1.25;
+}
+
+.app-shell .mission-item small,
+.app-shell .mission-card small {
+  display: block;
+  margin-top: 3px;
+  color: var(--toon-text-soft);
+  line-height: 1.4;
+}
+
+.app-shell .mission-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.app-shell .mission-item > svg,
+.app-shell .mission-card > svg {
+  color: var(--toon-ink);
+}
+
+.app-shell .mission-number,
+.app-shell .mission-index {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-family: var(--toon-display);
+  font-style: italic;
+  font-weight: 900;
+  font-size: 13px;
+  color: var(--toon-ink);
+  background: var(--toon-paper-2);
+  border: 2px solid var(--toon-ink);
+  border-radius: 4px;
+  transform: skewX(-8deg);
+}
+
+.app-shell .mission-item.selected,
+.app-shell .mission-card.selected {
+  background: var(--toon-red);
+  border-color: var(--toon-ink);
+  box-shadow: 4px 4px 0 var(--toon-sun);
+}
+
+.app-shell .mission-item.selected strong,
+.app-shell .mission-card.selected strong,
+.app-shell .mission-item.selected > svg,
+.app-shell .mission-card.selected > svg {
+  color: #fff;
+}
+
+.app-shell .mission-item.selected small,
+.app-shell .mission-card.selected small {
+  color: #ffe3dc;
+}
+
+.app-shell .selected .mission-number,
+.app-shell .selected .mission-index {
+  background: var(--toon-sun);
+  color: var(--toon-ink);
+  border-color: var(--toon-ink);
+}
+
+.app-shell .mission-card .done-icon {
+  color: #1f9d55;
+  flex-shrink: 0;
+}
+
+.app-shell .mission-card.selected .done-icon {
+  color: var(--toon-sun);
+}
+
+.app-shell .free-link,
+.app-shell .free-button {
+  color: #c9cdea;
+  border-top: 2px dashed var(--toon-ink-soft);
+  font-weight: 700;
+}
+
+.app-shell .free-button {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 4px 10px;
+  margin-top: 14px;
+  padding: 14px 6px 0;
+  text-align: left;
+}
+
+.app-shell .free-button small {
+  grid-column: 2;
+  color: #a9b0d8;
+  font-weight: 600;
+}
+
+.app-shell .free-link.unlocked,
+.app-shell .free-link:hover,
+.app-shell .free-button:hover {
+  color: var(--toon-sun);
+}
+
+.app-shell .sidebar-note {
+  color: var(--toon-text);
+  background:
+    radial-gradient(rgba(11, 16, 48, 0.055) 0.9px, transparent 2.4px) 0 0 / 10px 10px,
+    var(--toon-paper);
+  border: 2.5px solid var(--toon-ink);
+  border-radius: 5px;
+  box-shadow: 4px 4px 0 #000417;
+}
+
+.app-shell .sidebar-note .eyebrow {
+  color: var(--toon-red-dark);
+}
+
+.app-shell .sidebar-note p {
+  color: var(--toon-text);
+}
+
+.app-shell .sidebar-note button {
+  color: var(--toon-red-dark);
+  font-weight: 800;
+}
+
+.app-shell .note-orbit {
+  color: var(--toon-ink);
+}
+
+.app-shell .local-status {
+  color: #a9b0d8;
+}
+
+/* Main area aligned with lesson-rail */
+.app-shell .lesson-rail + main {
+  margin-left: 254px;
+}
+
+.app-shell.no-sidebar main,
+.cockpit-screen.no-sidebar main,
+.app-shell.no-sidebar .workspace main {
+  margin-left: 0;
+  width: 100%;
+  max-width: none;
+}
+
+/* ---------- Main Area Header ---------- */
+.app-shell .title-number {
+  color: var(--toon-sun);
+}
+
+.app-shell .mission-heading p,
+.app-shell .mission-subtitle,
+.app-shell .mission-zero-subtitle {
+  color: #c9cdea;
+}
+
+.app-shell .heading-coordinate,
+.app-shell .heading-coordinate small {
+  color: #a9b0d8;
+}
+
+/* ---------- Panel Containers: Deep ink panel + ink outlines + hard shadows ---------- */
+.app-shell .simulator,
+.app-shell .mission-zero-panel,
+.app-shell .mission-zero-action-bar,
+.app-shell .zero-cta-bar,
+.app-shell .lesson-strip,
+.app-shell .chart-card {
+  background: var(--toon-ink-2);
+  border: 3px solid #000417;
+  border-radius: 6px;
+  box-shadow: 6px 6px 0 #000417;
+}
+
+.app-shell .simulator {
+  overflow: hidden;
+}
+
+.app-shell .scene-toolbar,
+.app-shell .telemetry {
+  background:
+    repeating-linear-gradient(-45deg, var(--toon-ink) 0 8px, #1a2152 8px 16px) right / 92px 100% no-repeat,
+    var(--toon-ink);
+  border-color: #000417;
+  border-width: 0 0 3px;
+  border-style: solid;
+}
+
+.app-shell .telemetry {
+  border-width: 3px 0 0;
+  background: var(--toon-ink);
+}
+
+.app-shell .panel-heading h3,
+.app-shell .ksp-panel-header,
+.app-shell .zero-card-header,
+.app-shell .zero-card-head {
+  color: var(--toon-paper);
+  font-weight: 800;
+}
+
+.app-shell .panel-heading h3 svg,
+.app-shell .panel-heading h3 .heading-icon {
+  color: var(--toon-sun);
+}
+
+/* View switcher pill */
+.app-shell .view-switch button,
+.app-shell .mission-zero-tab,
+.app-shell .mode-tabs button,
+.app-shell .chart-tab {
+  color: #c9cdea;
+  font-weight: 800;
+  border: 2px solid transparent;
+  border-radius: 4px;
+}
+
+.app-shell .view-switch button:hover,
+.app-shell .mission-zero-tab:hover,
+.app-shell .mode-tabs button:hover,
+.app-shell .chart-tab:hover {
+  color: var(--toon-paper);
+  background: var(--toon-ink-3);
+}
+
+.app-shell .view-switch button.active,
+.app-shell .mission-zero-tab.active,
+.app-shell .mode-tabs button.active,
+.app-shell .control-panel .mode-tabs button.active,
+.app-shell .chart-tab.active {
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  border-color: var(--toon-ink);
+  box-shadow: 2px 2px 0 #000417;
+}
+
+.app-shell .scene-tools button {
+  color: #c9cdea;
+  font-weight: 700;
+}
+
+.app-shell .scene-tools button.enabled,
+.app-shell .hatch-btn.enabled {
+  color: var(--toon-sun);
+}
+
+.app-shell .time-warp-btn.active {
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  border-color: var(--toon-ink);
+}
+
+/* ---------- Telemetry Metrics ---------- */
+.app-shell .metric-label {
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #a9b0d8;
+}
+
+.app-shell .metric strong {
+  font-family: var(--toon-display);
+  font-style: italic;
+  font-weight: 900;
+  color: var(--toon-paper);
+}
+
+.app-shell .metric strong small {
+  padding-left: 4px;
+  font-style: normal;
+  color: #b7bfe4;
+}
+
+.app-shell .metric.accent strong {
+  color: var(--toon-sun);
+}
+
+.app-shell .metric-detail {
+  color: #a9b0d8;
+}
+
+.app-shell .fuel-track {
+  background: var(--toon-ink-soft);
+  border: 1px solid #000417;
+}
+
+.app-shell .fuel-track i {
+  background: var(--toon-sun);
+}
+
+/* ---------- Buttons: Solar yellow primary / Cream secondary ---------- */
+.app-shell .primary-button,
+.app-shell .start-level1-btn,
+.app-shell .telemetry .action-buttons .primary-button {
+  position: relative;
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  border: 2.5px solid var(--toon-ink);
+  border-radius: 5px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  box-shadow:
+    0 4px 0 var(--toon-ink),
+    inset 0 -4px 0 var(--toon-sun-dark),
+    inset 0 2px 0 rgba(255, 255, 255, 0.65);
+  transition: transform 0.12s cubic-bezier(0.2, 1.4, 0.4, 1), box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.app-shell .primary-button:hover:not(:disabled),
+.app-shell .start-level1-btn:hover,
+.app-shell .telemetry .action-buttons .primary-button:hover {
+  background: #ffd95e;
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 0 var(--toon-ink),
+    inset 0 -4px 0 var(--toon-sun-dark),
+    inset 0 2px 0 rgba(255, 255, 255, 0.8);
+}
+
+.app-shell .primary-button:active:not(:disabled),
+.app-shell .start-level1-btn:active {
+  transform: translateY(3px);
+  box-shadow:
+    0 1px 0 var(--toon-ink),
+    inset 0 -2px 0 var(--toon-sun-dark);
+}
+
+.app-shell .secondary-button,
+.app-shell .telemetry .action-buttons .secondary-button,
+.app-shell .btn-debrief {
+  color: var(--toon-ink);
+  background: var(--toon-paper);
+  border: 2.5px solid var(--toon-ink);
+  border-radius: 5px;
+  font-weight: 800;
+  box-shadow: 0 3px 0 var(--toon-ink);
+  transition: transform 0.12s cubic-bezier(0.2, 1.4, 0.4, 1), box-shadow 0.12s ease;
+}
+
+.app-shell .secondary-button:hover:not(:disabled),
+.app-shell .telemetry .action-buttons .secondary-button:hover,
+.app-shell .btn-debrief:hover {
+  background: #fffdf6;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 var(--toon-ink);
+}
+
+.app-shell .btn-retry {
+  color: #fff;
+  background: var(--toon-red);
+  border: 2.5px solid var(--toon-ink);
+  border-radius: 5px;
+  font-weight: 800;
+  box-shadow: 0 3px 0 var(--toon-ink);
+}
+
+.app-shell .btn-retry:hover {
+  background: #ff5639;
+}
+
+/* Attitude and translation keys */
+.app-shell .control-group > span {
+  color: #c9cdea;
+  font-weight: 800;
+}
+
+.app-shell .control-group button {
+  color: var(--toon-paper);
+  background: var(--toon-ink-3);
+  border: 2px solid #000417;
+  border-radius: 5px;
+  box-shadow: 0 3px 0 #000417;
+}
+
+.app-shell .control-group button:not(:disabled):hover {
+  background: #28307a;
+}
+
+.app-shell .control-group button:not(:disabled):active,
+.app-shell .control-group button.active-firing {
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #000417;
+}
+
+.app-shell kbd {
+  font-family: var(--toon-font);
+  font-weight: 800;
+  color: var(--toon-ink);
+  background: var(--toon-paper);
+  border: 1.5px solid var(--toon-ink);
+  border-radius: 3px;
+  box-shadow: 0 2px 0 var(--toon-ink);
+}
+
+.app-shell .brake-button {
+  color: #fff;
+  background: var(--toon-red);
+  border: 2.5px solid var(--toon-ink);
+  border-radius: 5px;
+  font-weight: 800;
+  box-shadow: 0 4px 0 var(--toon-ink);
+}
+
+.app-shell .brake-button:hover:not(:disabled) {
+  background: #ff5639;
+}
+
+.app-shell .brake-button:active:not(:disabled),
+.app-shell .brake-button.active-brake {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--toon-ink);
+}
+
+/* ---------- Goal Banners (Sticky Note Style) ---------- */
+.app-shell .mission-goal-banner {
+  background: var(--toon-ink);
+  border: 2.5px solid var(--toon-sun);
+  border-radius: 5px;
+  box-shadow: 4px 4px 0 #000417;
+}
+
+.app-shell .goal-badge {
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  border: 2px solid var(--toon-ink);
+  border-radius: 3px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  transform: skewX(-10deg);
+}
+
+.app-shell .goal-criteria-pill {
+  background: var(--toon-ink-3);
+  border: 1.5px solid #000417;
+}
+
+/* ---------- 3D Scene Overlays ---------- */
+.app-shell .scene-brief {
+  color: var(--toon-text);
+  background:
+    radial-gradient(rgba(11, 16, 48, 0.055) 0.9px, transparent 2.4px) 0 0 / 10px 10px,
+    var(--toon-paper);
+  border: 3px solid var(--toon-ink);
+  border-radius: 6px;
+  box-shadow: 5px 5px 0 var(--toon-ink);
+}
+
+.app-shell .scene-brief h3,
+.app-shell .scene-brief p,
+.app-shell .scene-brief .action-box-text,
+.app-shell .scene-brief .brief-objective {
+  color: var(--toon-text);
+}
+
+.app-shell .scene-brief .eyebrow,
+.app-shell .scene-brief .action-box-title {
+  color: var(--toon-red-dark);
+}
+
+.app-shell .scene-brief .brief-id-tag {
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  border: 2px solid var(--toon-ink);
+}
+
+.app-shell .scene-brief .brief-action-box {
+  background: var(--toon-paper-2);
+  border: 2px solid var(--toon-ink);
+  border-radius: 4px;
+}
+
+.app-shell .scene-brief .brief-help {
+  color: var(--toon-blue);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.app-shell .scene-brief .brief-help:hover {
+  color: var(--toon-red-dark);
+}
+
+.app-shell .scene-tag,
+.app-shell .liftoff-stage-pill {
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  border: 2px solid var(--toon-ink);
+  border-radius: 3px;
+  font-weight: 800;
+  box-shadow: 2px 2px 0 var(--toon-ink);
+}
+
+.app-shell .scene-subtag,
+.app-shell .flight-state,
+.app-shell .mission-clock {
+  color: var(--toon-paper);
+  background: rgba(11, 16, 48, 0.88);
+  border: 1.5px solid #000417;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-weight: 700;
+  box-shadow: 2px 2px 0 #000417;
+}
+
+.app-shell .scene-bottom-left,
+.app-shell .liftoff-cam-hint {
+  color: #dce3ff;
+  background: rgba(11, 16, 48, 0.86);
+  border: 1.5px solid #000417;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-weight: 700;
+  box-shadow: 2px 2px 0 #000417;
+}
+
+@media (min-width: 701px) {
+  .app-shell .scene-container:has(.scene-brief) .scene-bottom-left {
+    left: 316px;
+  }
+  .app-shell .cockpit-screen .scene-container:has(.scene-brief) .scene-bottom-left {
+    left: 288px;
+  }
+}
+
+.app-shell .liftoff-pip-card {
+  border: 2.5px solid var(--toon-ink);
+  border-radius: 5px;
+  box-shadow: 4px 4px 0 var(--toon-ink);
+}
+
+/* ---------- Modals: Cream Dossier Cards ---------- */
+.app-shell .modal-backdrop {
+  background: rgba(11, 16, 48, 0.78);
+}
+
+.app-shell .modal {
+  color: var(--toon-text);
+  background:
+    radial-gradient(rgba(11, 16, 48, 0.055) 0.9px, transparent 2.4px) 0 0 / 10px 10px,
+    var(--toon-paper);
+  border: 3px solid var(--toon-ink);
+  border-radius: 6px;
+  box-shadow: 8px 8px 0 #000417;
+}
+
+.app-shell .modal h1,
+.app-shell .modal h2,
+.app-shell .modal h3 {
+  color: var(--toon-ink);
+  text-shadow: none;
+}
+
+.app-shell .modal p {
+  color: var(--toon-text);
+}
+
+.app-shell .modal .eyebrow {
+  color: var(--toon-red-dark);
+}
+
+.app-shell .modal-close {
+  color: var(--toon-ink);
+}
+
+/* Dark cards and light-text elements nested inside cream modals */
+.app-shell .modal .intro-card {
+  color: #eef6e9;
+}
+
+.app-shell .modal .intro-card p {
+  color: #d6e6ce;
+}
+
+.app-shell .modal .intro-card small {
+  color: #a9bfb1;
+}
+
+.app-shell .modal p.modal-highlight {
+  color: #e2f2d5;
+}
+
+.app-shell .modal .debrief-header {
+  background: #161d1a;
+  color: #eef6f1;
+}
+
+.app-shell .modal .debrief-header.is-success {
+  background: #132319;
+}
+
+.app-shell .modal .debrief-header.is-failure {
+  background: #241410;
+}
+
+.app-shell .modal .debrief-summary {
+  color: #d5e5df;
+}
+
+.app-shell .modal .debrief-metric-card {
+  color: #eef6f1;
+}
+
+.app-shell .modal .debrief-metric-card .metric-eval {
+  color: #c4d5ce;
+}
+
+.app-shell .modal .debrief-insights-card {
+  background: #141c19;
+  color: #eef6f1;
+}
+
+.app-shell .modal .debrief-insights-card p {
+  color: #d6e6e0;
+}
+
+.app-shell .modal .briefing-card {
+  color: #eef6f1;
+}
+
+.app-shell .modal .briefing-card .card-text {
+  color: #d3e6d9;
+}
+
+.app-shell .modal .briefing-note-box {
+  color: #e2efe0;
+}
+
+.app-shell .modal .briefing-note-box p {
+  color: #c5d9c2;
+}
+
+.app-shell .modal .briefing-fun-fact-box {
+  background: #0f172a;
+  color: #eef4fb;
+}
+
+.app-shell .modal .briefing-fun-fact-box p {
+  color: #d7e2ee;
+}
+
+.app-shell .modal .briefing-constraints-line {
+  color: var(--toon-text-soft);
+}
+
+.app-shell .modal .intro-mission-goal-box {
+  color: #eef6ea;
+}
+
+.app-shell .modal .intro-mission-goal-box .goal-box-desc {
+  color: #c3d8c0;
+}
+
+.app-shell .modal .intro-track .intro-track-msg {
+  color: #d6e3d0;
+}
+
+.app-shell .modal .intro-track.crash .intro-track-msg {
+  color: #ffb39a;
+}
+
+.app-shell .modal .intro-track.lost .intro-track-msg {
+  color: #f2cf86;
+}
+
+.app-shell .modal .intro-track.success .intro-track-msg {
+  color: var(--lime);
+}
+
+.app-shell .modal .intro-reasons {
+  color: #eef6ea;
+}
+
+.app-shell .modal .intro-reasons p {
+  color: #c4d4be;
+}
+
+.app-shell .modal .intro-grid {
+  color: #eef6ea;
+}
+
+.app-shell .modal .intro-grid p {
+  color: #c8d7c2;
+}
+
+.app-shell .modal .intro-keys {
+  color: var(--toon-text);
+}
+
+.app-shell .modal .intro-skip {
+  color: var(--toon-text-soft);
+}
+
+.app-shell .modal .intro-skip:hover {
+  color: var(--toon-ink);
+}
+
+.app-shell .modal .event-list {
+  color: var(--toon-text);
+}
+
+.app-shell .modal .event-list time {
+  color: var(--toon-red-dark);
+  font-weight: 700;
+}
+
+.app-shell .modal .landing-debrief-chart {
+  background: var(--toon-ink);
+  color: #e9f2f7;
+}
+
+.app-shell .modal .landing-debrief-chart .eyebrow {
+  color: var(--toon-sun);
+}
+
+/* ---------- Footer / Hints ---------- */
+.app-shell footer {
+  color: #7d85b5;
+  font-weight: 700;
+}
+
+.app-shell .notice {
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  border: 2px solid var(--toon-ink);
+  box-shadow: 3px 3px 0 #000417;
+}
+
+.app-shell .mobile-course {
+  color: var(--toon-sun);
+  font-weight: 800;
+}
+
+/* ---------- Mobile Responsive: lesson-rail matches sidebar ---------- */
+@media (max-width: 700px) {
+  .app-shell .lesson-rail {
+    display: none;
+    position: fixed;
+    top: 52px;
+    bottom: 58px;
+    min-height: 0;
+    width: 280px;
+    z-index: 8;
+  }
+
+  .app-shell .lesson-rail.open {
+    display: flex;
+  }
+
+  .app-shell .lesson-rail + main {
+    margin-left: 0;
+  }
+
+  .app-shell .brand {
+    width: 32px;
+    height: 32px;
+  }
+
+  .app-shell .brand img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .app-shell .topbar nav {
+    background: var(--toon-ink);
+    border-top: 3px solid var(--toon-red);
+    gap: 0;
+  }
+
+  .app-shell .topbar nav:has(.topbar-nav-divider) {
+    justify-content: flex-start;
+    padding: 0 10px;
+    gap: 6px;
+  }
+
+  .app-shell .topbar nav button {
+    border-bottom-width: 0;
+    border-top: 3px solid transparent;
+  }
+
+  .app-shell .topbar nav button.topbar-secondary-btn {
+    font-size: 12px;
+    padding: 10px 8px;
+  }
+
+  .app-shell .topbar nav button.nav-active {
+    border-top-color: var(--toon-sun);
+  }
+}
+
+/* ==========================================================================
+   Home-page parity: "Mission Files" dossier cards
+   Cream paper body + ink header strip (hatched corner) + skewed sun tag,
+   identical to the home screen .scenario-card.
+   ========================================================================== */
+
+.app-shell .control-panel,
+.app-shell .attitude-panel,
+.app-shell .ksp-panel,
+.app-shell .zero-card {
+  color: var(--toon-text);
+  background:
+    radial-gradient(rgba(11, 16, 48, 0.055) 0.9px, transparent 2.4px) 0 0 / 10px 10px,
+    var(--toon-paper);
+  border: 3px solid var(--toon-ink);
+  border-radius: 6px;
+  box-shadow: 7px 7px 0 #000417;
+  padding: 0 16px 14px;
+  overflow: hidden;
+}
+
+/* Ink header strip, flush with the card edges */
+.app-shell .control-panel .panel-heading,
+.app-shell .attitude-panel .panel-heading,
+.app-shell .zero-card .zero-card-header,
+.app-shell .zero-card .zero-card-head,
+.app-shell .ksp-panel .ksp-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 -16px 12px;
+  padding: 7px 14px;
+  min-height: 40px;
+  color: var(--toon-paper);
+  background:
+    repeating-linear-gradient(-45deg, var(--toon-ink) 0 8px, #1a2152 8px 16px) right / 92px 100% no-repeat,
+    var(--toon-ink);
+  border-bottom: 3px solid #000417;
+}
+
+.app-shell .control-panel .panel-heading h3,
+.app-shell .attitude-panel .panel-heading h3,
+.app-shell .zero-card .zero-card-header h3,
+.app-shell .zero-card .zero-card-head h3,
+.app-shell .ksp-panel .ksp-panel-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--toon-paper);
+}
+
+/* Skewed sun tag before each header title (like "MISSION FILES") */
+.app-shell .panel-heading h3 > svg,
+.app-shell .panel-heading h3 > .heading-icon,
+.app-shell .zero-card-head > svg,
+.app-shell .zero-card-header h3 > svg,
+.app-shell .ksp-panel-header h3 > svg {
+  box-sizing: content-box;
+  width: 14px;
+  height: 14px;
+  padding: 3px 7px;
+  color: var(--toon-ink) !important;
+  stroke: var(--toon-ink);
+  background: var(--toon-sun);
+  transform: skewX(-12deg);
+  flex-shrink: 0;
+}
+
+.app-shell .panel-heading h3 > .heading-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  padding: 1px 8px;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.app-shell .zero-card .zero-card-head {
+  justify-content: flex-start;
+}
+
+.app-shell .panel-heading .eyebrow {
+  color: var(--toon-sun);
+}
+
+.app-shell .ksp-panel .ksp-panel-sub {
+  color: #c9cdea;
+  font-weight: 700;
+}
+
+.app-shell .ksp-panel {
+  padding: 0 16px 14px;
+  overflow: hidden;
+}
+
+/* Mode tabs sit on the ink strip */
+.app-shell .control-panel .mode-tabs {
+  border: 2px solid #000417;
+  background: var(--toon-ink-3);
+}
+
+/* ---------- Flight controls body (on paper) ---------- */
+.app-shell .control-panel .control-group > span {
+  color: var(--toon-ink);
+}
+
+.app-shell .control-panel .control-group button {
+  color: var(--toon-ink);
+  background: var(--toon-paper-2);
+  border: 2px solid var(--toon-ink);
+  box-shadow: 0 3px 0 var(--toon-ink);
+}
+
+.app-shell .control-panel .control-group button:not(:disabled):hover {
+  background: #fffdf6;
+}
+
+.app-shell .control-panel .control-group button:disabled {
+  opacity: 0.45;
+}
+
+.app-shell .control-panel .control-group button:not(:disabled):active,
+.app-shell .control-panel .control-group button.active-firing {
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  box-shadow: 0 1px 0 var(--toon-ink);
+}
+
+.app-shell .control-panel .control-hint {
+  color: var(--toon-text-soft);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.app-shell .control-panel .hatch-pad-btn {
+  color: var(--toon-ink);
+  background: var(--toon-paper-2);
+  border: 2px solid var(--toon-ink);
+  border-radius: 5px;
+  font-weight: 800;
+  box-shadow: 0 3px 0 var(--toon-ink);
+}
+
+.app-shell .control-panel .hatch-pad-btn span {
+  color: var(--toon-ink);
+  background: var(--toon-paper);
+  border-color: var(--toon-ink);
+}
+
+.app-shell .control-panel .hatch-pad-btn.hatch-open {
+  background: var(--toon-sun);
+}
+
+.app-shell .rcs-beacon-pill,
+.app-shell .aligned-tag {
+  font-weight: 900;
+  letter-spacing: 1px;
+  border: 2px solid var(--toon-ink);
+  border-radius: 3px;
+  transform: skewX(-10deg);
+  box-shadow: none;
+}
+
+.app-shell .aligned-tag,
+.app-shell .rcs-beacon-pill.cyan {
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+}
+
+.app-shell .rcs-beacon-pill.red {
+  color: #fff;
+  background: var(--toon-red);
+}
+
+/* ---------- Attitude monitor body (on paper) ---------- */
+.app-shell .attitude-panel .attitude-values > div > span {
+  color: var(--toon-text-soft);
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.app-shell .attitude-panel .attitude-values strong {
+  font-family: var(--toon-display);
+  font-style: italic;
+  font-weight: 900;
+  color: var(--toon-ink);
+}
+
+.app-shell .attitude-panel .attitude-values small {
+  color: var(--toon-text-soft);
+}
+
+.app-shell .attitude-panel .attitude-values strong.val-aligned,
+.app-shell .attitude-panel p b.val-aligned {
+  color: var(--toon-red-dark);
+  text-shadow: none;
+}
+
+.app-shell .attitude-panel .angle-track {
+  border-bottom: 2px solid var(--toon-ink);
+  background: repeating-linear-gradient(90deg, transparent 0, transparent calc(10% - 1px), var(--toon-text-soft) calc(10% - 1px), var(--toon-text-soft) 10%);
+}
+
+.app-shell .attitude-panel .angle-track i {
+  background: var(--toon-red);
+  border: 1px solid var(--toon-ink);
+  box-shadow: none;
+}
+
+.app-shell .attitude-panel p {
+  color: var(--toon-text-soft);
+  font-weight: 700;
+}
+
+.app-shell .attitude-panel p b {
+  color: var(--toon-ink);
+  font-weight: 800;
+}
+
+/* ---------- Briefing cards (Departure / Landing level 00, Docking/Liftoff 00) ---------- */
+.app-shell .zero-card p,
+.app-shell .zero-card .zero-summary-p,
+.app-shell .zero-card .zero-card-tagline {
+  color: var(--toon-text) !important;
+}
+
+.app-shell .zero-card .zero-card-tagline {
+  color: var(--toon-red-dark) !important;
+  font-family: var(--toon-font);
+  font-weight: 800;
+}
+
+.app-shell .zero-specs-list {
+  display: grid;
+  gap: 8px;
+}
+
+.app-shell .zero-card .zero-spec-item,
+.app-shell .zero-card .zero-spec-cell,
+.app-shell .zero-card .roadmap-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  color: var(--toon-text);
+  background: var(--toon-paper-2);
+  border: 2px solid var(--toon-ink);
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 var(--toon-ink);
+}
+
+.app-shell .zero-card .zero-spec-cell,
+.app-shell .zero-card .roadmap-step {
+  display: block;
+}
+
+.app-shell .zero-card .zero-spec-item > svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--toon-red-dark);
+}
+
+.app-shell .zero-card .zero-spec-item small,
+.app-shell .zero-card .zero-spec-label,
+.app-shell .zero-card .step-desc {
+  display: block;
+  color: var(--toon-red-dark);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.app-shell .zero-card .zero-spec-item strong,
+.app-shell .zero-card .zero-spec-val,
+.app-shell .zero-card .step-title {
+  display: block;
+  margin-top: 2px;
+  color: var(--toon-ink);
+  font-weight: 800;
+}
+
+.app-shell .zero-card .step-desc {
+  color: var(--toon-text-soft);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+.app-shell .zero-glossary-item {
+  padding: 10px 12px;
+  background: var(--toon-paper-2);
+  border: 2px solid var(--toon-ink);
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 var(--toon-ink);
+}
+
+.app-shell .zero-glossary-item strong {
+  color: var(--toon-red-dark);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.app-shell .zero-glossary-item p {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+.app-shell .zero-card .zero-science-box {
+  color: var(--toon-ink);
+}
+
+/* ---------- Liftoff flight toolbar buttons ---------- */
+.app-shell .liftoff-flight-actions > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 5px 9px;
+  font-size: 11.5px;
+  white-space: nowrap;
+  font-weight: 800;
+  color: var(--toon-ink);
+  background: var(--toon-paper);
+  border: 2.5px solid var(--toon-ink);
+  border-radius: 5px;
+  box-shadow: 0 3px 0 #000417;
+  transition: transform 0.12s cubic-bezier(0.2, 1.4, 0.4, 1), box-shadow 0.12s ease;
+}
+
+.app-shell .liftoff-flight-actions > button.primary {
+  background: var(--toon-sun);
+  box-shadow:
+    0 3px 0 #000417,
+    inset 0 -3px 0 var(--toon-sun-dark);
+}
+
+.app-shell .liftoff-flight-actions > .liftoff-view-toggle {
+  background: var(--toon-sky);
+}
+
+.app-shell .liftoff-flight-actions > button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #000417;
+}
+
+.app-shell .liftoff-flight-actions > button:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #000417;
+}
+
+.app-shell .mission-zero-grid {
+  display: grid;
+  gap: 22px;
+  padding-right: 7px;
+}
+
+/* ---------- Time warp (time compression) selector: equal, aligned segments ---------- */
+.app-shell .time-warp-group {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 4px;
+  height: 32px;
+  padding: 3px;
+  background: var(--toon-ink);
+  border: 2px solid #000417;
+  border-radius: 5px;
+  box-shadow: 2px 2px 0 #000417;
+}
+
+.app-shell .time-warp-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 6px 0 4px;
+  font-family: var(--toon-font);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #a9b0d8;
+}
+
+.app-shell .time-warp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  padding: 0 !important;
+  font-family: var(--toon-font);
+  font-size: 12px !important;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: #c9cdea !important;
+  border: 2px solid transparent !important;
+  border-radius: 3px !important;
+}
+
+.app-shell .time-warp-btn:hover:not(.active) {
+  color: var(--toon-paper) !important;
+  background: var(--toon-ink-3) !important;
+}
+
+.app-shell .time-warp-btn.active {
+  color: var(--toon-ink) !important;
+  background: var(--toon-sun) !important;
+  border-color: #000417 !important;
+}
+
+/* ---------- Liftoff launch-vehicle switch (Saturn V / SLS), home-page button style ---------- */
+.app-shell .liftoff-vehicle-switch {
+  gap: 8px;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+.app-shell .liftoff-vehicle-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 6px;
+  color: var(--toon-ink);
+  background: var(--toon-paper);
+  border: 2.5px solid var(--toon-ink);
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 #000417;
+  transition: transform 0.14s cubic-bezier(0.2, 1.4, 0.4, 1), box-shadow 0.14s ease;
+}
+
+.app-shell .liftoff-vehicle-btn strong {
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.app-shell .liftoff-vehicle-btn small {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--toon-text-soft);
+  line-height: 1.2;
+}
+
+.app-shell .liftoff-vehicle-btn:hover {
+  color: var(--toon-ink);
+  background: #fffdf6;
+  transform: translate(-1px, -2px);
+  box-shadow: 4px 5px 0 #000417;
+}
+
+.app-shell .liftoff-vehicle-btn.active {
+  color: #fff;
+  background: var(--toon-red);
+  border-color: var(--toon-ink);
+  box-shadow: 3px 3px 0 var(--toon-sun);
+}
+
+.app-shell .liftoff-vehicle-btn.active small {
+  color: #ffe3dc;
+}
+
+/* ---------- Topbar language selector ---------- */
+.app-shell .topbar .language-select {
+  color: #dbe2ff;
+  border: 1.5px solid #2b3578;
+  background: var(--toon-ink-2);
+  border-radius: 5px;
+  font-weight: 700;
+}
+
+.app-shell .topbar .language-select:hover,
+.app-shell .topbar .language-select:has(select:focus-visible) {
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  border-color: var(--toon-ink);
+}
+
+.app-shell .topbar .language-select select option {
+  background: var(--toon-ink);
+  color: var(--toon-paper);
+}
+
+/* ---------- Departure & Landing Level 1 Cockpit Header, Telemetry & Action Deck ---------- */
+.app-shell .mission-header .mission-title-bar h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0 8px;
+}
+
+.app-shell .mission-header .mission-title-bar h1 .title-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 9px;
+  font-size: 16px;
+  font-weight: 900;
+  font-style: normal;
+  letter-spacing: 0;
+  text-shadow: none;
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  border: 2px solid #000417;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 #000417;
+  transform: skewX(-8deg);
+  flex-shrink: 0;
+}
+
+.app-shell .liftoff-cockpit-deck {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 16px;
+  background:
+    repeating-linear-gradient(-45deg, var(--toon-ink) 0 8px, #1a2152 8px 16px) right / 92px 100% no-repeat,
+    var(--toon-ink);
+  border: 3px solid #000417;
+  border-radius: 6px;
+  box-shadow: 6px 6px 0 #000417;
+}
+
+.app-shell .liftoff-telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  flex: 1 1 560px;
+  min-width: 0;
+}
+
+.app-shell .liftoff-telemetry-grid .metric {
+  padding: 4px 14px;
+  border-right: 1px solid #2b3578;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.app-shell .liftoff-telemetry-grid .metric:first-child {
+  padding-left: 0;
+}
+
+.app-shell .liftoff-telemetry-grid .metric:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+.app-shell .liftoff-telemetry-grid .metric > span {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #a9b0d8;
+}
+
+.app-shell .liftoff-telemetry-grid .metric > strong {
+  font-family: var(--toon-display);
+  font-style: italic;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 1.15;
+  color: var(--toon-paper);
+}
+
+.app-shell .liftoff-telemetry-grid .metric.warn > strong {
+  color: var(--toon-sun);
+}
+
+.app-shell .liftoff-telemetry-grid .metric.good > strong {
+  color: #7df5a8;
+}
+
+.app-shell .liftoff-telemetry-grid .metric > small {
+  font-size: 11px;
+  color: #a9b0d8;
+  line-height: 1.3;
+}
+
+.app-shell .liftoff-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  flex: 1 1 auto;
+  max-width: 100%;
+}
+
+.app-shell .liftoff-action-row .primary-button,
+.app-shell .liftoff-action-row .secondary-button,
+.app-shell .liftoff-action-row .stage-fire-btn {
+  padding: 8px 12px;
+  font-size: 12.5px;
+}
+
+.app-shell .stage-fire-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 15px;
+  font-size: 13px;
+  font-weight: 900;
+  color: #fff;
+  background: var(--toon-red);
+  border: 2.5px solid #000417;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 #000417;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.app-shell .stage-fire-btn:hover:not(:disabled) {
+  background: #ff5639;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #000417;
+}
+
+.app-shell .stage-fire-btn:active:not(:disabled) {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 #000417;
+}
+
+.app-shell .stage-fire-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .app-shell .liftoff-telemetry-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 0;
+  }
+  .app-shell .liftoff-telemetry-grid .metric:nth-child(even) {
+    border-right: 0;
+  }
+  .app-shell .liftoff-telemetry-grid .metric:nth-child(3) {
+    padding-left: 0;
+  }
+}
+
+/* ---------- Liftoff Sequence Bar, Orbit Ribbon & Cream KSP Console ---------- */
+.app-shell .liftoff-sequence-bar,
+.app-shell .liftoff-orbit-ribbon {
+  background: rgba(11, 16, 48, 0.92);
+  border: 2px solid #000417;
+  box-shadow: 3px 3px 0 #000417;
+}
+
+.app-shell .seq-step {
+  color: #9ba5d4;
+  font-weight: 700;
+}
+
+.app-shell .seq-dot {
+  background: var(--toon-ink-soft);
+}
+
+.app-shell .seq-step.done {
+  color: var(--toon-sun);
+}
+
+.app-shell .seq-step.done .seq-dot {
+  background: var(--toon-sun);
+  box-shadow: none;
+}
+
+.app-shell .seq-step.active {
+  color: #fff;
+}
+
+.app-shell .seq-step.active .seq-dot {
+  background: var(--toon-red);
+  box-shadow: 0 0 0 2px rgba(252, 61, 33, 0.35);
+}
+
+.app-shell .orbit-ribbon-item span {
+  color: #a9b0d8;
+}
+
+.app-shell .orbit-ribbon-item strong {
+  color: var(--toon-sun);
+  font-weight: 900;
+}
+
+.app-shell .ksp-stage-card {
+  background: var(--toon-paper-2);
+  border: 2px solid var(--toon-ink);
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 var(--toon-ink);
+}
+
+.app-shell .ksp-stage-card.active-stage {
+  background: #fffdf6;
+  border-color: var(--toon-ink);
+  box-shadow: 3px 3px 0 var(--toon-sun);
+}
+
+.app-shell .stage-card-top strong {
+  color: var(--toon-ink);
+  font-weight: 900;
+}
+
+.app-shell .stage-badge {
+  color: var(--toon-ink);
+  background: var(--toon-paper);
+  border: 1.5px solid var(--toon-ink);
+  font-weight: 800;
+}
+
+.app-shell .stage-badge.burning {
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+}
+
+.app-shell .stage-badge.meco {
+  color: #fff;
+  background: var(--toon-red);
+}
+
+.app-shell .stage-fuel-track {
+  background: var(--toon-ink);
+  border: 1px solid #000417;
+}
+
+.app-shell .stage-fuel-fill {
+  background: var(--toon-sun);
+}
+
+.app-shell .stage-card-meta {
+  color: var(--toon-text-soft);
+  font-weight: 700;
+}
+
+.app-shell .throttle-box,
+.app-shell .aero-stress-meter {
+  background: var(--toon-paper-2);
+  border: 2px solid var(--toon-ink);
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 var(--toon-ink);
+}
+
+.app-shell .throttle-header span,
+.app-shell .aero-stress-top span {
+  color: var(--toon-ink);
+  font-weight: 800;
+}
+
+.app-shell .throttle-header strong {
+  color: var(--toon-red-dark);
+  font-weight: 900;
+}
+
+.app-shell .throttle-slider {
+  accent-color: var(--toon-red);
+}
+
+.app-shell .throttle-quick-btns button,
+.app-shell .sas-mode-btn,
+.app-shell .pitch-steer-btn,
+.app-shell .ksp-les-btn {
+  color: var(--toon-ink);
+  background: var(--toon-paper);
+  border: 2px solid var(--toon-ink);
+  border-radius: 5px;
+  font-weight: 800;
+  box-shadow: 0 2px 0 var(--toon-ink);
+}
+
+.app-shell .throttle-quick-btns button:hover,
+.app-shell .sas-mode-btn:hover,
+.app-shell .pitch-steer-btn:hover,
+.app-shell .ksp-les-btn:hover:not(:disabled) {
+  background: #fffdf6;
+}
+
+.app-shell .sas-mode-btn.active,
+.app-shell .pitch-steer-btn:active {
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  border-color: var(--toon-ink);
+}
+
+.app-shell .ksp-stage-trigger-btn {
+  color: #fff;
+  background: var(--toon-red);
+  border: 2.5px solid #000417;
+  border-radius: 5px;
+  font-weight: 900;
+  box-shadow: 3px 3px 0 #000417;
+}
+
+.app-shell .ksp-stage-trigger-btn.ready-highlight {
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  border-color: #000417;
+  box-shadow: 3px 3px 0 #000417;
+}
+
+.app-shell .aero-stress-bar {
+  background: var(--toon-ink);
+  border: 1px solid #000417;
+}
+
+.app-shell .navball-svg-wrap {
+  box-shadow: 0 0 0 3px var(--toon-ink), 4px 4px 0 #000417;
+}
+
+/* ---------- Field Guide & Flight Log: Cream Paper Dossier Cards ---------- */
+.app-shell .content-page .guide-lesson,
+.app-shell .content-page .science-note,
+.app-shell .content-page .empty-state {
+  color: var(--toon-text);
+  background:
+    radial-gradient(rgba(11, 16, 48, 0.055) 0.9px, transparent 2.4px) 0 0 / 10px 10px,
+    var(--toon-paper);
+  border: 3px solid var(--toon-ink);
+  border-radius: 6px;
+  box-shadow: 6px 6px 0 #000417;
+}
+
+.app-shell .content-page .guide-lesson {
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.app-shell .content-page .guide-lesson > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 36px;
+  padding: 0;
+  flex-shrink: 0;
+  font-family: var(--toon-display);
+  font-weight: 900;
+  font-style: normal;
+  font-size: 15px;
+  color: var(--toon-ink);
+  background: var(--toon-sun);
+  border: 2px solid var(--toon-ink);
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 #000417;
+  transform: skewX(-10deg);
+  text-shadow: none;
+}
+
+.app-shell .content-page .science-note {
+  padding: 20px 22px;
+  margin-top: 16px;
+}
+
+.app-shell .content-page .guide-lesson h2,
+.app-shell .content-page .guide-lesson h3,
+.app-shell .content-page .science-note h2,
+.app-shell .content-page .science-note h3,
+.app-shell .content-page .empty-state h2,
+.app-shell .content-page .empty-state h3 {
+  color: var(--toon-ink);
+  font-weight: 900;
+  font-style: normal;
+  letter-spacing: -0.2px;
+  text-shadow: none;
+}
+
+.app-shell .content-page .guide-lesson p,
+.app-shell .content-page .science-note p,
+.app-shell .content-page .empty-state p {
+  color: var(--toon-text-soft);
+}
+
+.app-shell .content-page .guide-lesson small,
+.app-shell .content-page .guide-lesson .eyebrow,
+.app-shell .content-page .science-note .eyebrow {
+  color: var(--toon-red-dark);
+  font-weight: 800;
+}
+
+.app-shell .content-page .empty-state > svg {
+  color: var(--toon-red-dark);
+}
+
+/* ---------- Enlarge Liftoff 3D Rocket Viewport on Levels 2-5 ---------- */
+@media (min-width: 701px) {
+  .app-shell.cockpit-screen .liftoff-shell.liftoff-no-sidebar > main.liftoff-main.liftoff-level-1 {
+    gap: 5px;
+    padding: 6px 14px 8px;
+  }
+
+  .app-shell.cockpit-screen .liftoff-stage-header {
+    min-height: 28px;
+    padding: 0 2px;
+  }
+
+  .app-shell.cockpit-screen .liftoff-main .telemetry {
+    padding: 4px 12px;
+  }
+
+  .app-shell.cockpit-screen .ksp-panel {
+    padding: 0 12px 7px;
+  }
+
+  .app-shell.cockpit-screen .ksp-panel .ksp-panel-header {
+    min-height: 28px;
+    margin: 0 -12px 7px;
+    padding: 4px 12px;
+    border-bottom-width: 2px;
+  }
+
+  .app-shell.cockpit-screen .ksp-panel .ksp-panel-header h3 {
+    font-size: 12px;
+  }
+
+  .app-shell.cockpit-screen .ksp-panel .ksp-panel-header h3 > svg {
+    width: 12px;
+    height: 12px;
+    padding: 2px 5px;
+  }
+
+  .app-shell.cockpit-screen .ksp-stage-card {
+    padding: 4px 8px;
+    box-shadow: 2px 2px 0 var(--toon-ink);
+  }
+
+  .app-shell.cockpit-screen .throttle-box {
+    padding: 5px 8px;
+    box-shadow: 2px 2px 0 var(--toon-ink);
+  }
+
+  .app-shell.cockpit-screen .throttle-quick-btns button,
+  .app-shell.cockpit-screen .sas-mode-btn,
+  .app-shell.cockpit-screen .pitch-steer-btn {
+    padding: 4px 7px;
+    font-size: 10.5px;
+  }
+
+  .app-shell.cockpit-screen .ksp-stage-trigger-btn {
+    padding: 5px 8px;
+    font-size: 11.5px;
+  }
+
+  .app-shell.cockpit-screen .ksp-les-btn {
+    padding: 3px 8px;
+    font-size: 10.5px;
+  }
+
+  .app-shell.cockpit-screen .aero-stress-meter {
+    padding: 3px 8px;
+    box-shadow: 2px 2px 0 var(--toon-ink);
+  }
+}
+
+/* ---------- Text Selection Contrast ---------- */
+/* Default & dark-surface selection: bright NASA sun highlight with deep ink text */
+::selection {
+  background: #ffcf3f;
+  color: #0b1030;
+}
+
+/* Cream / light dossier surfaces: deep NASA blue highlight with cream paper text */
+.app-shell .modal::selection,
+.app-shell .modal ::selection,
+.app-shell .control-panel ::selection,
+.app-shell .attitude-panel ::selection,
+.app-shell .zero-card ::selection,
+.app-shell .sidebar-note ::selection,
+.app-shell .scene-brief ::selection,
+.app-shell .mission-item:not(.selected) ::selection,
+.app-shell .mission-card:not(.selected) ::selection,
+.app-shell .ksp-stage-card ::selection,
+.app-shell .throttle-box ::selection,
+.app-shell .aero-stress-meter ::selection,
+.app-shell .content-page .guide-lesson ::selection,
+.app-shell .content-page .science-note ::selection,
+.app-shell .content-page .empty-state ::selection {
+  background: #0b3d91;
+  color: #fff8ea;
+}
+
+/* Dark cards & dark headers nested inside cream containers revert to bright sun highlight */
+.app-shell .control-panel .panel-heading ::selection,
+.app-shell .attitude-panel .panel-heading ::selection,
+.app-shell .zero-card .zero-card-header ::selection,
+.app-shell .zero-card .zero-card-head ::selection,
+.app-shell .modal .intro-card::selection,
+.app-shell .modal .intro-card ::selection,
+.app-shell .modal .modal-highlight::selection,
+.app-shell .modal .modal-highlight ::selection,
+.app-shell .modal .debrief-header::selection,
+.app-shell .modal .debrief-header ::selection,
+.app-shell .modal .debrief-metric-card::selection,
+.app-shell .modal .debrief-metric-card ::selection,
+.app-shell .modal .debrief-insights-card::selection,
+.app-shell .modal .debrief-insights-card ::selection,
+.app-shell .modal .briefing-card::selection,
+.app-shell .modal .briefing-card ::selection,
+.app-shell .modal .briefing-note-box::selection,
+.app-shell .modal .briefing-note-box ::selection,
+.app-shell .modal .briefing-fun-fact-box::selection,
+.app-shell .modal .briefing-fun-fact-box ::selection,
+.app-shell .modal .intro-mission-goal-box::selection,
+.app-shell .modal .intro-mission-goal-box ::selection,
+.app-shell .modal .intro-reasons::selection,
+.app-shell .modal .intro-reasons ::selection,
+.app-shell .modal .intro-grid::selection,
+.app-shell .modal .intro-grid ::selection,
+.app-shell .modal .intro-rule::selection,
+.app-shell .modal .intro-rule ::selection,
+.app-shell .modal .intro-track::selection,
+.app-shell .modal .intro-track ::selection,
+.app-shell .modal .lab-group::selection,
+.app-shell .modal .lab-group ::selection,
+.app-shell .modal .landing-debrief-chart::selection,
+.app-shell .modal .landing-debrief-chart ::selection,
+.app-shell .modal .modal-dark-card::selection,
+.app-shell .modal .modal-dark-card ::selection {
+  background: #ffcf3f;
+  color: #0b1030;
+}

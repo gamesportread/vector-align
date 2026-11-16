@@ -1,0 +1,2059 @@
+/* Liftoff Simulator & KSP Cockpit Styles */
+
+.liftoff-shell {
+  display: contents;
+}
+
+.liftoff-vehicle-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin: 10px 0 14px;
+  background: rgba(12, 20, 17, 0.75);
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid rgba(184, 245, 102, 0.16);
+}
+
+.liftoff-vehicle-switch.single-vehicle {
+  grid-template-columns: 1fr;
+}
+
+.liftoff-vehicle-btn {
+  padding: 6px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #9cb0a4;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.liftoff-vehicle-btn:hover {
+  color: #eef5f0;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.liftoff-vehicle-btn.active {
+  background: rgba(184, 245, 102, 0.15);
+  border-color: rgba(184, 245, 102, 0.45);
+  color: var(--lime, #b8f566);
+}
+
+/* Time Warp Pill Bar in Toolbar */
+.time-warp-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: rgba(10, 17, 14, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 2px 4px;
+}
+
+.time-warp-label {
+  font-size: 11px;
+  color: #8fa698;
+  padding: 0 5px;
+  font-weight: 600;
+}
+
+.time-warp-btn {
+  padding: 3px 7px !important;
+  font-size: 11px !important;
+  font-family: var(--mono, monospace);
+  border-radius: 4px !important;
+  border: none !important;
+  background: transparent !important;
+  color: #b4c6bc !important;
+  cursor: pointer;
+}
+
+.time-warp-btn.active {
+  background: var(--lime, #b8f566) !important;
+  color: #08110c !important;
+  font-weight: 700;
+}
+
+/* Liftoff Viewport Canvas */
+.liftoff-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background: #050a0f;
+  overflow: hidden;
+  user-select: none;
+}
+
+.liftoff-render-canvas,
+.liftoff-render-canvas-3d {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  cursor: grab;
+}
+
+.liftoff-render-canvas-3d:active {
+  cursor: grabbing;
+}
+
+.app-shell.liftoff-program {
+  --liftoff-gutter: 16px;
+}
+
+.app-shell.liftoff-program > .topbar {
+  padding-inline-start: calc(var(--liftoff-gutter) + 3px);
+}
+
+.app-shell.liftoff-program > .topbar .brand {
+  width: auto;
+}
+
+.app-shell.liftoff-program > .topbar .brand:hover {
+  transform: translateY(-1px);
+}
+
+.app-shell.liftoff-program .liftoff-shell > .liftoff-main {
+  padding-inline: var(--liftoff-gutter);
+  overflow-y: auto;
+}
+
+@media (max-width: 700px) {
+  .app-shell.liftoff-program {
+    --liftoff-gutter: 10px;
+  }
+}
+
+.liftoff-simulator .scene-hud-guide {
+  backdrop-filter: none;
+}
+
+.liftoff-simulator .scene-container[data-paused] * {
+  animation-play-state: paused;
+}
+
+.liftoff-main .liftoff-scene-toolbar {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 6px;
+  height: auto;
+  min-height: 36px;
+  padding-block: 5px 7px;
+  padding-inline-start: 0;
+}
+
+.liftoff-flight-actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 4px;
+}
+
+.liftoff-scene-toolbar .scene-tools {
+  flex: none;
+  margin-left: auto;
+  justify-content: flex-end;
+}
+
+.liftoff-scene-toolbar .liftoff-sequence-bar {
+  flex: none;
+  margin-inline: 0;
+  overflow: visible;
+}
+
+.liftoff-view-toggle-labels {
+  display: grid;
+}
+
+.liftoff-view-toggle-labels > span {
+  grid-area: 1 / 1;
+}
+
+.liftoff-view-toggle-labels > span[hidden] {
+  display: block;
+  visibility: hidden;
+}
+
+.liftoff-toolbar-clock {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.liftoff-scene-toolbar .scene-tools .liftoff-warp-select {
+  display: none;
+}
+
+.liftoff-warp-select select {
+  appearance: auto;
+  border: 0;
+  background: var(--toon-ink, #0b1030);
+  color: var(--toon-sun, #ffcf3f);
+  font: 800 12px var(--toon-font, sans-serif);
+  cursor: pointer;
+}
+
+.liftoff-scene-toolbar[data-layout]:not([data-layout="full"]) .scene-tools .liftoff-warp-buttons {
+  display: none;
+}
+
+.liftoff-scene-toolbar[data-layout]:not([data-layout="full"]) .scene-tools .liftoff-warp-select {
+  display: inline-flex;
+}
+
+.liftoff-scene-toolbar .scene-tools .liftoff-velocity-toggle {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.liftoff-scene-toolbar .liftoff-velocity-toggle > .liftoff-toolbar-label {
+  display: inline;
+}
+
+.liftoff-scene-toolbar:is([data-layout="icons"], [data-layout="wrap"]) .liftoff-toolbar-label {
+  display: none;
+}
+
+.liftoff-main .liftoff-scene-toolbar[data-layout="wrap"],
+.liftoff-scene-toolbar[data-layout="wrap"] :is(.liftoff-flight-actions, .liftoff-sequence-bar) {
+  flex-wrap: wrap;
+}
+
+.liftoff-scene-toolbar[data-layout="wrap"] .liftoff-sequence-bar {
+  flex: 0 1 auto;
+}
+
+.liftoff-sequence-bar .seq-step {
+  white-space: nowrap;
+}
+
+.liftoff-briefing-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.liftoff-briefing .liftoff-key-legend {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+}
+
+.liftoff-briefing .liftoff-key-item {
+  color: var(--toon-paper, #fff8ea);
+}
+
+.liftoff-briefing .modal-actions {
+  flex-wrap: wrap;
+  margin-top: 0;
+}
+
+/* Launch Sequence Timeline Bar (inline inside .scene-toolbar) */
+.liftoff-sequence-bar {
+  position: static;
+  transform: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(6, 13, 18, 0.84);
+  border: 1px solid rgba(184, 245, 102, 0.22);
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 0 1 auto;
+  min-width: 0;
+  margin-left: 8px;
+  margin-right: auto;
+}
+
+.liftoff-sequence-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.seq-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  color: #6b8176;
+  font-weight: 600;
+}
+
+.seq-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #33463d;
+  flex-shrink: 0;
+}
+
+.seq-step.done {
+  color: #b8f566;
+}
+
+.seq-step.done .seq-dot {
+  background: #b8f566;
+  box-shadow: 0 0 6px rgba(184, 245, 102, 0.65);
+}
+
+.seq-step.active {
+  color: #fff6d6;
+}
+
+.seq-step.active .seq-dot {
+  background: #ffb84d;
+  box-shadow: 0 0 8px #ffb84d;
+  animation: pulse-meco 0.7s infinite alternate;
+}
+
+.seq-line {
+  width: 10px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.14);
+  margin: 0 1px;
+}
+
+.seq-step.done .seq-line {
+  background: rgba(184, 245, 102, 0.45);
+}
+
+/* Composite Multi-View PiP Dock (Onboard Stage-Cam + Live Orbital Radar) */
+.liftoff-composite-dock {
+  position: absolute;
+  top: 72px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.liftoff-pip-card {
+  width: 204px;
+  background: rgba(6, 12, 17, 0.88);
+  border: 1px solid rgba(184, 245, 102, 0.32);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+}
+
+.pip-card-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  background: rgba(16, 26, 23, 0.92);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--mono, monospace);
+  font-size: 9.5px;
+}
+
+.pip-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff5c5c;
+  box-shadow: 0 0 6px #ff5c5c;
+  animation: pulse-meco 0.9s infinite alternate;
+}
+
+.pip-live-dot.cyan {
+  background: #4de2d1;
+  box-shadow: 0 0 6px #4de2d1;
+}
+
+.pip-title {
+  color: #dcebe3;
+  font-weight: 700;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pip-sub {
+  color: #b8f566;
+  font-weight: 700;
+}
+
+.pip-canvas {
+  display: block;
+  width: 204px !important;
+  height: 96px !important;
+}
+
+@media (max-width: 900px) {
+  .liftoff-sequence-bar {
+    display: none;
+  }
+  .liftoff-composite-dock {
+    display: none;
+  }
+}
+
+.mission-item.mission-full-launch {
+  border-color: rgba(184, 245, 102, 0.38);
+  background: linear-gradient(135deg, rgba(28, 46, 32, 0.72), rgba(16, 28, 24, 0.85));
+}
+
+.mission-item.mission-full-launch .mission-number {
+  border-color: rgba(184, 245, 102, 0.55);
+  color: #b8f566;
+}
+
+.liftoff-3d-badge-bar {
+  position: absolute;
+  bottom: 50px;
+  left: 14px;
+  right: 228px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@media (min-width: 1100px) {
+  .scene-container:has(.scene-brief) .liftoff-3d-badge-bar {
+    left: 288px;
+  }
+}
+
+.liftoff-stage-pill {
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: rgba(8, 16, 13, 0.78);
+  border: 1px solid rgba(184, 245, 102, 0.35);
+  color: #b8f566;
+  font-size: 11px;
+  font-weight: 700;
+  backdrop-filter: blur(6px);
+}
+
+.liftoff-cam-hint {
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: rgba(8, 16, 13, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #b5c8be;
+  font-size: 11px;
+  backdrop-filter: blur(6px);
+}
+
+/* Orbital Ap / Pe Ribbon Overlay inside Scene */
+.liftoff-orbit-ribbon {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: rgba(7, 14, 12, 0.86);
+  border: 1px solid rgba(184, 245, 102, 0.25);
+  backdrop-filter: blur(8px);
+  z-index: 6;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.orbit-ribbon-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 12px;
+}
+
+.orbit-ribbon-item .tag {
+  font-family: var(--mono, monospace);
+  font-weight: 700;
+  font-size: 11px;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.orbit-ribbon-item .tag.ap {
+  background: rgba(77, 226, 209, 0.18);
+  color: #4de2d1;
+}
+
+.orbit-ribbon-item .tag.pe-sub {
+  background: rgba(255, 184, 77, 0.18);
+  color: #ffb84d;
+}
+
+.orbit-ribbon-item .tag.pe-ok {
+  background: rgba(184, 245, 102, 0.22);
+  color: #b8f566;
+}
+
+.orbit-ribbon-item strong {
+  font-family: var(--mono, monospace);
+  font-size: 13px;
+  color: #f0f7f3;
+}
+
+.orbit-ribbon-item small {
+  color: #8da396;
+  font-size: 11px;
+}
+
+/* Lower KSP Console Panels */
+.liftoff-lower-console {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+@media (max-width: 960px) {
+  .liftoff-lower-console {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ksp-panel {
+  background: rgba(12, 20, 17, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ksp-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding-bottom: 8px;
+}
+
+.ksp-panel-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #eef5f1;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.ksp-panel-sub {
+  font-size: 11px;
+  color: #8fa698;
+}
+
+/* Left Panel: Staging Stack + Throttle + Stage Trigger */
+.ksp-propulsion-body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.liftoff-propulsion-panels {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, min(42%, 20rem)) minmax(0, 1fr);
+  gap: 8px;
+}
+
+@media (min-width: 701px) {
+  .liftoff-main .liftoff-lower-console {
+    grid-template-columns: minmax(0, 1fr) minmax(0, max-content);
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1000px) {
+  .liftoff-main .liftoff-lower-console {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.liftoff-main .liftoff-lower-console {
+  /* The three stage cards set the HUD height; every other panel body matches it. */
+  --hud-card-h: 48px;
+  --hud-gap: 5px;
+  --hud-body-h: calc(3 * var(--hud-card-h) + 2 * var(--hud-gap));
+  --hud-btn-h: 32px;
+}
+
+.liftoff-main .liftoff-lower-console :is(
+  .ksp-panel-sub, .stage-badge, .stage-card-meta, .ksp-panel button,
+  .aero-stress-top
+) {
+  font-size: 11px;
+}
+
+.liftoff-main .liftoff-lower-console .ksp-propulsion-body {
+  grid-template-columns: minmax(0, 1fr) minmax(0, min(43%, 12rem));
+  gap: 8px;
+}
+
+.liftoff-main .liftoff-lower-console .ksp-throttle-col {
+  min-width: 0;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.liftoff-main .liftoff-lower-console .ksp-stage-stack {
+  gap: var(--hud-gap);
+  justify-content: flex-start;
+}
+
+.app-shell .liftoff-main .liftoff-lower-console .ksp-stage-card {
+  padding: 4px 8px;
+}
+
+@media (min-width: 701px) {
+  .app-shell .liftoff-main .liftoff-lower-console .ksp-panel {
+    gap: 0;
+  }
+
+  .liftoff-main .liftoff-lower-console :is(.ksp-propulsion-body, .liftoff-ascent-metrics, .ksp-navball-layout) {
+    height: var(--hud-body-h);
+  }
+
+  .app-shell .liftoff-main .liftoff-lower-console .ksp-stage-card {
+    height: var(--hud-card-h);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .app-shell .liftoff-main .liftoff-lower-console .stage-card-top {
+    margin: 0;
+  }
+
+  .app-shell .liftoff-main .liftoff-lower-console .stage-card-top strong {
+    font-size: 12px;
+  }
+
+  .app-shell .liftoff-main .liftoff-lower-console .stage-badge {
+    font-size: 10px;
+    line-height: 1.3;
+  }
+
+  .app-shell .liftoff-main .liftoff-lower-console .stage-fuel-track {
+    height: 5px;
+  }
+
+  .app-shell .liftoff-main .liftoff-lower-console .stage-card-meta {
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .liftoff-main .liftoff-lower-console .liftoff-ascent-metrics {
+    grid-template-rows: repeat(3, var(--hud-card-h));
+    row-gap: var(--hud-gap);
+  }
+
+  .app-shell .liftoff-main .liftoff-lower-console :is(.ksp-stage-trigger-btn, .ksp-les-btn) {
+    flex: none;
+    height: var(--hud-btn-h);
+    padding-block: 0;
+  }
+
+  .liftoff-main .liftoff-lower-console .ksp-navball-layout {
+    --navball-size: var(--hud-body-h);
+    --attitude-gap: var(--hud-gap);
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .liftoff-main .liftoff-lower-console .ksp-attitude-side {
+    flex: 1 1 auto;
+    min-width: 236px;
+  }
+
+  .liftoff-main .liftoff-lower-console .ksp-attitude-controls {
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: auto;
+    width: auto;
+  }
+
+  .app-shell .liftoff-main .liftoff-lower-console :is(.sas-mode-btn, .pitch-steer-btn) {
+    min-height: 0;
+    padding-block: 0;
+  }
+}
+
+/* Large screens: scale the Liftoff chrome with the viewport (1440x900 = 1x). */
+.app-shell.liftoff-program {
+  --liftoff-ui-scale: 1;
+}
+
+@media (min-width: 1600px) and (min-height: 1000px) {
+  .app-shell.liftoff-program { --liftoff-ui-scale: 1.1; }
+}
+
+@media (min-width: 1760px) and (min-height: 1100px) {
+  .app-shell.liftoff-program { --liftoff-ui-scale: 1.2; }
+}
+
+@media (min-width: 1900px) and (min-height: 1180px) {
+  .app-shell.liftoff-program { --liftoff-ui-scale: 1.3; }
+}
+
+@media (min-width: 2040px) and (min-height: 1270px) {
+  .app-shell.liftoff-program { --liftoff-ui-scale: 1.4; }
+}
+
+@media (min-width: 2300px) and (min-height: 1430px) {
+  .app-shell.liftoff-program { --liftoff-ui-scale: 1.6; }
+}
+
+@media (min-width: 701px) {
+  .app-shell.liftoff-program > .topbar,
+  .app-shell.liftoff-program .liftoff-main :is(
+    .liftoff-scene-toolbar, .liftoff-lower-console, .scene-top-left, .scene-hud-guide,
+    .scene-failure-overlay, .liftoff-consequence-pill
+  ) {
+    zoom: var(--liftoff-ui-scale);
+  }
+
+  .app-shell.cockpit-screen.liftoff-program > main,
+  .app-shell.cockpit-screen.liftoff-program .liftoff-shell > main {
+    height: calc(100dvh - 48px * var(--liftoff-ui-scale));
+    max-height: calc(100dvh - 48px * var(--liftoff-ui-scale));
+  }
+}
+
+@media (max-width: 600px) {
+  .liftoff-main .liftoff-lower-console .ksp-propulsion-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Flight parameters: stat tiles drawn like the stage cards */
+.liftoff-ascent-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px 7px;
+  margin: 0;
+}
+
+.liftoff-ascent-metrics > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2px;
+  padding: 4px 8px;
+  background: var(--toon-paper-2, rgba(255, 255, 255, 0.03));
+  border: 2px solid var(--toon-ink, rgba(255, 255, 255, 0.08));
+  border-radius: 5px;
+  box-shadow: 2px 2px 0 var(--toon-ink, transparent);
+}
+
+.liftoff-ascent-metrics dt {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--toon-text-soft, #8fa698);
+}
+
+.liftoff-ascent-metrics dd {
+  margin: 0;
+  font: 800 14px/1.15 var(--mono, monospace);
+  text-align: right;
+  white-space: nowrap;
+  color: var(--toon-ink, #eef5f1);
+}
+
+.liftoff-apsis-tag {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 0 4px;
+  border-radius: 3px;
+  font: 800 10px/1.4 var(--mono, monospace);
+  background: var(--toon-ink, #0b1030);
+  color: var(--toon-sun, #ffcf3f);
+}
+
+.liftoff-apsis-metric.is-below-surface dd {
+  color: var(--toon-red-dark, #ff7b7b);
+}
+
+.liftoff-ascent-metrics .liftoff-readout-tooltip {
+  text-align: left;
+}
+
+.liftoff-ascent-metrics > div:nth-child(odd) .liftoff-readout-tooltip {
+  left: 0;
+  right: auto;
+}
+
+@media (max-width: 700px) {
+  .liftoff-ascent-metrics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.liftoff-main .liftoff-lower-console .stage-card-meta {
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.liftoff-main .liftoff-lower-console .stage-card-meta > span:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.liftoff-main .liftoff-lower-console .throttle-quick-btns button {
+  padding-inline: 4px;
+  white-space: nowrap;
+}
+
+.liftoff-main .liftoff-lower-console :is(.ksp-stage-trigger-btn, .ksp-les-btn) span {
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* The aero meter follows the button grid width instead of widening the panel. */
+.liftoff-main .liftoff-lower-console .aero-stress-meter {
+  width: 0;
+  min-width: 100%;
+}
+
+.liftoff-main .liftoff-lower-console .aero-stress-top {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .ksp-propulsion-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ksp-stage-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.ksp-stage-card {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+
+.ksp-stage-card.active-stage {
+  background: rgba(184, 245, 102, 0.07);
+  border-color: rgba(184, 245, 102, 0.4);
+}
+
+.ksp-stage-card.separated-stage {
+  opacity: 0.42;
+  border-style: dashed;
+}
+
+.stage-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.stage-card-top strong {
+  color: #eef5f1;
+  font-size: 12px;
+}
+
+.stage-badge {
+  font-size: 10px;
+  font-family: var(--mono, monospace);
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #b8c9bf;
+}
+
+.stage-badge.burning {
+  background: rgba(255, 184, 77, 0.2);
+  color: #ffb84d;
+}
+
+.stage-badge.meco {
+  background: rgba(255, 92, 92, 0.22);
+  color: #ff7b7b;
+  animation: pulse-meco 1s infinite alternate;
+}
+
+@keyframes pulse-meco {
+  from { opacity: 0.65; }
+  to { opacity: 1; }
+}
+
+.stage-fuel-track {
+  height: 7px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.stage-fuel-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffb84d, #b8f566);
+  transition: width 0.1s linear;
+}
+
+.stage-card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #8fa698;
+  margin-top: 4px;
+  font-family: var(--mono, monospace);
+}
+
+/* Throttle & Stage Action Column */
+.ksp-throttle-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 175px;
+}
+
+.throttle-box {
+  background: rgba(0, 0, 0, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 9px 11px;
+}
+
+.throttle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.throttle-header strong {
+  font-family: var(--mono, monospace);
+  color: var(--lime, #b8f566);
+  font-size: 14px;
+}
+
+.throttle-slider {
+  width: 100%;
+  accent-color: #b8f566;
+  cursor: pointer;
+}
+
+.throttle-quick-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.throttle-quick-btns button {
+  padding: 5px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: #dce8e1;
+  cursor: pointer;
+}
+
+.throttle-quick-btns button:hover {
+  border-color: var(--lime, #b8f566);
+}
+
+/* Big KSP STAGE Button */
+.ksp-stage-trigger-btn {
+  padding: 11px 12px;
+  border-radius: 8px;
+  border: 2px solid #ffb84d;
+  background: linear-gradient(135deg, rgba(255, 152, 0, 0.25), rgba(255, 87, 34, 0.25));
+  color: #fff3e0;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+
+.ksp-stage-trigger-btn.ready-highlight {
+  border-color: #b8f566;
+  background: linear-gradient(135deg, rgba(184, 245, 102, 0.28), rgba(77, 226, 209, 0.22));
+  color: #f4ffea;
+  box-shadow: 0 0 16px rgba(184, 245, 102, 0.25);
+}
+
+.ksp-stage-trigger-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.12);
+}
+
+.ksp-les-btn {
+  padding: 7px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(77, 226, 209, 0.35);
+  background: rgba(77, 226, 209, 0.1);
+  color: #b8f5ed;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.ksp-les-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Right Panel: Navball & Attitude Control */
+.ksp-navball-layout {
+  --attitude-row-height: 34px;
+  --attitude-gap: 5px;
+  --navball-size: 148px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 10px;
+}
+
+.navball-svg-wrap {
+  position: relative;
+  flex: 0 0 auto;
+  width: var(--navball-size);
+  height: var(--navball-size);
+  border-radius: 50%;
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.75), 0 0 0 3px rgba(255, 255, 255, 0.12);
+}
+
+.navball-svg-wrap svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.ksp-attitude-side {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: var(--attitude-gap);
+  min-width: 0;
+}
+
+.ksp-attitude-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(var(--attitude-row-height), 1fr);
+  gap: var(--attitude-gap);
+  width: max-content;
+  max-width: 100%;
+}
+
+.ksp-attitude-controls button {
+  white-space: nowrap;
+}
+
+.liftoff-navball-panel .ksp-panel-header {
+  contain: inline-size;
+  flex-wrap: wrap;
+}
+
+.sas-mode-btn {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: #b8c9bf;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+
+.sas-mode-btn.active {
+  background: rgba(77, 226, 209, 0.16);
+  border-color: #4de2d1;
+  color: #e6fffa;
+}
+
+.pitch-steer-btn {
+  padding: 9px 10px;
+  border-radius: 7px;
+  border: 1px solid rgba(184, 245, 102, 0.28);
+  background: rgba(184, 245, 102, 0.08);
+  color: #e9f5ec;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pitch-steer-btn:active {
+  background: rgba(184, 245, 102, 0.24);
+}
+
+.aero-stress-meter {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 6px;
+  padding: 4px 8px 5px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.aero-stress-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 10px;
+  font-size: 11px;
+  line-height: 1.25;
+  white-space: nowrap;
+  color: #9cb0a4;
+  margin-bottom: 4px;
+}
+
+.aero-stress-top strong {
+  margin-left: 6px;
+  font-family: var(--mono, monospace);
+  font-weight: 900;
+}
+
+.app-shell .aero-stress-top .liftoff-pressure-readout {
+  font-weight: 700;
+  color: var(--toon-text-soft, #9cb0a4);
+}
+
+.liftoff-pressure-readout strong {
+  margin-left: 2px;
+  color: var(--toon-ink, #eef5f1);
+}
+
+.aero-stress-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.aero-stress-fill {
+  height: 100%;
+  transition: width 0.1s linear;
+}
+
+.liftoff-readout-help {
+  position: relative;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  cursor: help;
+}
+
+.liftoff-readout-tooltip {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 6px);
+  z-index: 5;
+  width: min(240px, calc(100vw - 48px));
+  padding: 6px 8px;
+  border-radius: 5px;
+  background: var(--toon-ink, #0b1030);
+  color: var(--toon-paper, #fff8ea);
+  font: 12px/1.4 var(--toon-font, sans-serif);
+  white-space: normal;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.liftoff-readout-help:is(:hover, :focus-visible) .liftoff-readout-tooltip {
+  visibility: visible;
+}
+
+/* Enhanced Liftoff Failure Overlay & Deduction Presentation */
+.scene-failure-overlay {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  pointer-events: auto;
+  width: 92%;
+  max-width: 580px;
+}
+
+.liftoff-failure-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(18, 12, 12, 0.94);
+  border: 1px solid rgba(255, 110, 70, 0.75);
+  padding: 14px 18px;
+  border-radius: 10px;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.8), 0 0 18px rgba(255, 90, 50, 0.2);
+  color: #f1f5f9;
+  white-space: normal;
+  animation: failureCardPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes failureCardPop {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.liftoff-failure-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.liftoff-failure-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ff9d7d;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.liftoff-failure-autoclose {
+  font-size: 0.6875rem;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.liftoff-failure-detail {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: #e2e8f0;
+  margin: 0 0 10px;
+  word-break: break-word;
+}
+
+.liftoff-failure-tip {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 14px;
+}
+
+.liftoff-failure-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.liftoff-btn-review,
+.liftoff-btn-observe,
+.liftoff-btn-retry {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.16s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.liftoff-btn-review {
+  background: rgba(51, 65, 85, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  color: #cbd5e1;
+}
+
+.liftoff-btn-review:hover {
+  background: rgba(71, 85, 105, 1);
+  color: #fff;
+}
+
+.liftoff-btn-observe {
+  background: rgba(14, 116, 144, 0.35);
+  border: 1px solid rgba(6, 182, 212, 0.5);
+  color: #67e8f9;
+}
+
+.liftoff-btn-observe:hover {
+  background: rgba(14, 116, 144, 0.6);
+  color: #fff;
+}
+
+.liftoff-btn-retry {
+  background: rgba(16, 185, 129, 0.35);
+  border: 1px solid rgba(16, 185, 129, 0.6);
+  color: #6ee7b7;
+}
+
+.liftoff-btn-retry:hover {
+  background: rgba(16, 185, 129, 0.65);
+  color: #fff;
+}
+
+/* Compact consequence status pill */
+.liftoff-consequence-pill {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100% - 24px);
+  white-space: nowrap;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(244, 63, 94, 0.6);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+  padding: 6px 14px;
+  border-radius: 20px;
+  color: #f1f5f9;
+  font-size: 0.75rem;
+  font-weight: 500;
+  animation: consequencePillPop 0.25s ease;
+}
+
+@keyframes consequencePillPop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -6px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.consequence-text {
+  color: #fca5a5;
+  font-weight: 600;
+}
+
+.consequence-pill-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+  font-size: 0.6875rem;
+  padding: 3px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.consequence-pill-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.consequence-pill-retry {
+  background: rgba(16, 185, 129, 0.3);
+  border-color: rgba(16, 185, 129, 0.6);
+  color: #6ee7b7;
+  font-weight: 600;
+}
+
+.consequence-pill-retry:hover {
+  background: rgba(16, 185, 129, 0.6);
+  color: #fff;
+}
+
+/* ==========================================================================
+   No-Sidebar Liftoff Layout, Tabbed Header, Objective Panel & Level 1 Bar
+   ========================================================================== */
+
+.app-shell .liftoff-shell.liftoff-no-sidebar > main.liftoff-main {
+  margin-left: 0;
+  width: 100%;
+  max-width: none;
+}
+
+.app-shell .liftoff-shell.liftoff-no-sidebar > main.liftoff-main.liftoff-level-1 {
+  min-height: calc(100dvh - 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 16px 12px;
+}
+
+.app-shell.cockpit-screen .liftoff-shell.liftoff-no-sidebar > main.liftoff-main.liftoff-level-1 {
+  height: calc(100dvh - 48px);
+  max-height: calc(100dvh - 48px);
+  overflow: hidden;
+}
+
+.liftoff-stage-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 36px;
+  padding: 2px 2px 4px;
+}
+
+.liftoff-stage-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--toon-paper, #fff8ea);
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.liftoff-stage-title .title-number {
+  font-family: var(--mono, monospace);
+  color: var(--toon-sun, #ffcf3f);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.liftoff-view-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--toon-ink, #0b1030);
+  border: 2px solid #000417;
+  box-shadow: 3px 3px 0 #000417;
+  flex-shrink: 0;
+}
+
+.liftoff-view-tab {
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  background: transparent;
+  color: #c5cbe8;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.liftoff-view-tab:hover {
+  color: var(--toon-paper, #fff8ea);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.liftoff-view-tab.active {
+  background: var(--toon-sun, #ffcf3f);
+  border-color: #000417;
+  color: #0b1030;
+  font-weight: 800;
+}
+
+.liftoff-objective-panel {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 4px 2px 16px;
+}
+
+.liftoff-objective-grid {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.liftoff-objective-card {
+  background: var(--toon-ink-2, #141a45);
+  border: 3px solid #000417;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0 #000417;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #dbe2ff;
+}
+
+.liftoff-objective-card.is-wide {
+  grid-column: 1 / -1;
+}
+
+.liftoff-objective-card h3 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--toon-sun, #ffcf3f);
+}
+
+.liftoff-objective-card p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #d4dbf7;
+}
+
+.liftoff-objective-lead {
+  font-size: 15px !important;
+  font-weight: 700;
+  color: var(--toon-paper, #fff8ea) !important;
+}
+
+.liftoff-objective-focus {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(68, 200, 255, 0.1);
+  border: 1.5px solid rgba(68, 200, 255, 0.35);
+  color: #e6f6ff !important;
+  font-weight: 600;
+}
+
+.liftoff-objective-criteria {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(255, 207, 63, 0.12);
+  border: 1.5px solid rgba(255, 207, 63, 0.4);
+  color: var(--toon-paper, #fff8ea) !important;
+  font-weight: 700;
+}
+
+.liftoff-objective-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: var(--toon-red, #fc3d21);
+  border: 2px solid #000417;
+  color: var(--toon-paper, #fff8ea);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.liftoff-objective-badge.is-science {
+  background: var(--toon-sky, #44c8ff);
+  color: #0b1030;
+}
+
+.liftoff-objective-science {
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.16);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.liftoff-science-term {
+  color: var(--toon-sun, #ffcf3f) !important;
+}
+
+.liftoff-science-lesson {
+  color: #b7c3eb !important;
+  font-size: 13px !important;
+}
+
+.liftoff-key-legend-title {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #aebae6;
+}
+
+.liftoff-key-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px;
+}
+
+.liftoff-key-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(11, 16, 48, 0.72);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  font-size: 12.5px;
+}
+
+.liftoff-key-item kbd {
+  flex-shrink: 0;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--toon-ink-3, #1d2560);
+  border: 2px solid #000417;
+  color: var(--toon-sun, #ffcf3f);
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.liftoff-objective-actions {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.app-shell .liftoff-simulator-minimal {
+  flex: 1 1 0;
+  min-height: 360px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-shell .liftoff-simulator-minimal .scene-container {
+  flex: 1 1 0;
+  min-height: 0;
+  height: 100% !important;
+}
+
+.liftoff-3d-badge-bar.is-minimal {
+  bottom: 12px;
+  left: 14px;
+  right: 14px;
+  justify-content: flex-end;
+}
+
+.liftoff-minimal-result {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 25;
+  width: min(560px, calc(100% - 28px));
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(11, 16, 48, 0.9);
+  border: 3px solid #000417;
+  box-shadow: 6px 6px 0 #000417;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--toon-paper, #fff8ea);
+}
+
+.liftoff-minimal-result.is-success {
+  border-color: var(--toon-sun, #ffcf3f);
+}
+
+.liftoff-minimal-result.is-failed {
+  border-color: var(--toon-red, #fc3d21);
+}
+
+.liftoff-minimal-result-text strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.liftoff-minimal-result.is-success .liftoff-minimal-result-text strong {
+  color: var(--toon-sun, #ffcf3f);
+}
+
+.liftoff-minimal-result.is-failed .liftoff-minimal-result-text strong {
+  color: #ff8e7a;
+}
+
+.liftoff-minimal-result-text p {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #dce3ff;
+}
+
+.liftoff-minimal-result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.liftoff-minimal-bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 14px;
+  background: var(--toon-ink-2, #141a45);
+  border: 3px solid #000417;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0 #000417;
+}
+
+.liftoff-min-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.liftoff-min-controls button,
+.liftoff-min-stage-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.liftoff-min-stage-btn {
+  background: linear-gradient(135deg, var(--toon-red, #fc3d21), var(--toon-red-dark, #c42a12));
+  border: 2px solid #000417;
+  box-shadow: 2px 2px 0 #000417;
+  color: var(--toon-paper, #fff8ea);
+  cursor: pointer;
+}
+
+.liftoff-min-stage-btn.ready-highlight {
+  background: linear-gradient(135deg, var(--toon-sun, #ffcf3f), var(--toon-sun-dark, #e6a90f));
+  color: #0b1030;
+}
+
+.liftoff-min-throttle {
+  flex: 1 1 200px;
+  max-width: 320px;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.liftoff-min-throttle-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #d6deff;
+}
+
+.liftoff-min-throttle-label strong {
+  margin-left: auto;
+  font-family: var(--mono, monospace);
+  color: var(--toon-sun, #ffcf3f);
+}
+
+.liftoff-min-telemetry {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.liftoff-min-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 72px;
+}
+
+.liftoff-min-stat span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #9ba7d8;
+}
+
+.liftoff-min-stat strong {
+  font-family: var(--mono, monospace);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--toon-paper, #fff8ea);
+}
+
+@media (max-width: 900px) {
+  .liftoff-objective-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .liftoff-minimal-bar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .liftoff-min-throttle {
+    max-width: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .app-shell .liftoff-shell.liftoff-no-sidebar > main.liftoff-main.liftoff-level-1,
+  .app-shell.cockpit-screen .liftoff-shell.liftoff-no-sidebar > main.liftoff-main.liftoff-level-1 {
+    height: calc(100dvh - 106px);
+    max-height: calc(100dvh - 106px);
+    min-height: 0;
+    padding: 6px 10px 8px;
+  }
+
+  .app-shell .liftoff-shell.liftoff-no-sidebar > main.liftoff-main .liftoff-stage-header {
+    order: 1;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .app-shell .liftoff-shell.liftoff-no-sidebar > main.liftoff-main .liftoff-stage-title {
+    font-size: 15px;
+  }
+
+  .app-shell .liftoff-shell.liftoff-no-sidebar > main.liftoff-main .simulator,
+  .app-shell .liftoff-shell.liftoff-no-sidebar > main.liftoff-main .liftoff-objective-panel {
+    order: 2;
+  }
+
+  .app-shell .liftoff-shell.liftoff-no-sidebar > main.liftoff-main .liftoff-simulator-minimal {
+    min-height: 220px;
+  }
+
+  .app-shell .liftoff-shell.liftoff-no-sidebar > main.liftoff-main .liftoff-minimal-bar,
+  .app-shell .liftoff-shell.liftoff-no-sidebar > main.liftoff-main .mobile-console-switcher {
+    order: 3;
+  }
+
+  .app-shell .liftoff-shell.liftoff-no-sidebar > main.liftoff-main .liftoff-lower-console {
+    order: 4;
+  }
+
+  .liftoff-minimal-bar {
+    padding: 8px 10px;
+  }
+
+  .liftoff-min-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .liftoff-min-stage-btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .liftoff-min-telemetry {
+    margin-left: auto;
+    gap: 12px;
+  }
+}
+
+/* ==========================================================================
+   Landing Sequence Bar, HUD Guidance, 5-Col Deck & Telemetry Debrief Chart
+   ========================================================================== */
+
+.landing-sequence-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(11, 16, 48, 0.9);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);
+}
+
+.landing-seq-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 3px 4px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+}
+
+.landing-seq-step .seq-index {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono, monospace);
+  font-size: 10px;
+  background: rgba(148, 163, 184, 0.22);
+  color: #e2e8f0;
+}
+
+.landing-seq-step.active {
+  color: var(--toon-sun, #ffcf3f);
+  background: rgba(255, 207, 63, 0.14);
+  border-color: rgba(255, 207, 63, 0.5);
+}
+
+.landing-seq-step.active .seq-index {
+  background: var(--toon-sun, #ffcf3f);
+  color: #0b1030;
+}
+
+.landing-seq-step.done {
+  color: #b8f566;
+  background: rgba(184, 245, 102, 0.12);
+  border-color: rgba(184, 245, 102, 0.45);
+}
+
+.landing-seq-step.done .seq-index {
+  background: #b8f566;
+  color: #0b1030;
+}
+
+.landing-hud-guidance {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  max-width: min(560px, calc(100% - 28px));
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(11, 16, 48, 0.88);
+  border: 2px solid #000417;
+  box-shadow: 3px 3px 0 #000417;
+  color: var(--toon-paper, #fff8ea);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.landing-hud-guidance.is-urgent {
+  background: rgba(252, 61, 33, 0.92);
+  border-color: var(--toon-sun, #ffcf3f);
+  color: #fff;
+}
+
+.app-shell .liftoff-telemetry-grid.landing-telemetry-grid {
+  grid-template-columns: repeat(5, minmax(96px, 1fr));
+}
+
+.landing-debrief-chart {
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(11, 16, 48, 0.72);
+  border: 1.5px solid rgba(148, 163, 184, 0.25);
+  display: grid;
+  gap: 8px;
+}
+
+.landing-debrief-chart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.landing-chart-tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 2px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.landing-chart-tabs button {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.landing-chart-tabs button.active {
+  background: var(--toon-sun, #ffcf3f);
+  color: #0b1030;
+}
+
+.landing-chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  background: rgba(7, 11, 28, 0.65);
+}
+
+.landing-chart-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+.landing-chart-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.landing-chart-legend i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+@media (max-width: 700px) {
+  .app-shell .liftoff-telemetry-grid.landing-telemetry-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .landing-hud-guidance {
+    display: none;
+  }
+}
+
