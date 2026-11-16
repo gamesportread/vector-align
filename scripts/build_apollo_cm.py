@@ -322,13 +322,8 @@ cm_tex.paint_band(vh(0.89), 1.0, "#2c323b", rough=0.40, metal=0.76, height_delta
 cm_tex.add_soot_gradient(vh(-0.56), vh(-0.14), strength=0.44, dark_at_bottom=True)
 cm_tex.add_micro_wear(vh(-0.50), 0.96, strength=0.03, bump=0.06, seed=1969)
 
-# U_FRONT = 0.75 faces +Z (hatch & side windows); left/right flanks at u=0.0 and u=0.50
+# U_FRONT = 0.75 faces +Z (hatch & side windows); keep hull clear of flags/agency/mission markings
 U_FRONT = 0.75
-for u_flank in (0.04, 0.46):
-    cm_tex.draw_us_flag(u_flank, vh(0.32), 0.082, 0.115)
-    cm_tex.draw_nasa_meatball((u_flank + 0.11) % 1.0, vh(0.32), 0.034, 0.088)
-    cm_tex.draw_text("UNITED STATES", u_flank, vh(0.14), 0.115, 0.055, hex_col="#12151a", letter_spacing=1.08)
-    cm_tex.draw_text("APOLLO 11", (u_flank + 0.11) % 1.0, vh(0.14), 0.088, 0.052, hex_col="#b8241d", letter_spacing=1.06)
 
 # Photogrammetry roll targets around flanks & back
 for u_tgt in (0.18, 0.36, 0.62, 0.88):

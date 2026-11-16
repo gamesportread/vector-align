@@ -398,10 +398,7 @@ sic_tex.add_corrugation(v1(Y_SIC_IT0), v1(Y_SIC_TOP - 0.04), n_ribs=72, amp=0.55
 sic_tex.paint_band(v1(Y_SIC_IS0 - 0.015), v1(Y_SIC_IS0 + 0.015), "#656b73", rough=0.40, metal=0.65, height_delta=0.25)
 sic_tex.paint_band(v1(Y_SIC_TOP - 0.03), 1.0, "#757b82", rough=0.38, metal=0.70, height_delta=0.25)
 
-# Authentic Apollo 11 SA-506 markings: bold black stacked U S A + US Flag + Roll targets
-for u_p in (U_FRONT, U_BACK):
-    sic_tex.draw_vertical_letters("USA", u_p, v1(-1.42), 0.135, 0.068, 0.018, hex_col="#121417")
-    sic_tex.draw_us_flag((u_p + 0.075) % 1.0, v1(-1.12), 0.068, 0.017)
+# Stage roll targets (flags removed to comply with competition media rules)
 for u_p in (0.0, 0.25, 0.50, 0.75):
     sic_tex.draw_crosshair_target((u_p + 0.125) % 1.0, v1(-3.35), 0.014, 0.0055)
     sic_tex.draw_crosshair_target((u_p + 0.125) % 1.0, v1(-1.05), 0.014, 0.0055)
@@ -490,10 +487,7 @@ sii_tex.paint_quadrants(v2(Y_SII_TANK1), 1.0, n_quads=4, u_offset=0.125, phase=0
 sii_tex.add_corrugation(v2(Y_SII_TANK1 + 0.02), v2(Y_SII_TOP - 0.02), n_ribs=64, amp=0.48, ao_dark=0.14)
 sii_tex.paint_band(v2(Y_SII_TOP - 0.025), 1.0, "#6c7278", rough=0.38, metal=0.68, height_delta=0.22)
 
-# Authentic Red UNITED STATES + US Flag + targets on S-II
-for u_p in (U_FRONT, U_BACK):
-    sii_tex.draw_text("UNITED STATES", u_p, v2(1.06), 0.050, 0.44, hex_col="#c1241c", rotate_ccw_deg=90.0)
-    sii_tex.draw_us_flag((u_p + 0.08) % 1.0, v2(1.62), 0.068, 0.026)
+# Stage roll targets on S-II (flags removed to comply with competition media rules)
 for u_p in (0.125, 0.375, 0.625, 0.875):
     sii_tex.draw_crosshair_target(u_p, v2(0.45), 0.014, 0.008)
 
@@ -547,7 +541,6 @@ for du in (0.04, 0.29, 0.54, 0.79):
     sivb_tex.paint_rect_uv(du, v3(Y_IU0 + 0.02), du + 0.055, v3(Y_IU1 - 0.02), "#b8bec4", rough=0.34, metal=0.78, height_delta=0.12)
 
 for u_p in (U_FRONT, U_BACK):
-    sivb_tex.draw_us_flag(u_p, v3(3.58), 0.11, 0.08)
     sivb_tex.draw_crosshair_target((u_p + 0.12) % 1.0, v3(3.58), 0.022, 0.028)
 
 MATS["sivb_pbr"] = sivb_tex.build_material("SV_SIVB_PBR", normal_strength=2.0)

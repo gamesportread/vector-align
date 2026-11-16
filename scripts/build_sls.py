@@ -400,10 +400,7 @@ srb_tex.draw_checker_band(sv(Y_SRB_TOP - 0.84), sv(Y_SRB_TOP - 0.76), n_cols=16,
 srb_tex.paint_band(sv(Y_SRB_TOP - 0.34), sv(Y_SRB_TOP - 0.28), "#17191d", rough=0.56)
 srb_tex.paint_band(sv(Y_SRB_TOP - 0.08), 1.0, "#2b2e33", rough=0.45, metal=0.55)
 
-# Authentic Artemis I Red NASA Worm logo horizontally & Meatball insignia on SRBs
-for u_pos in (U_FRONT, (U_FRONT + 0.50) % 1.0):
-    srb_tex.draw_nasa_worm_horizontal(u_pos, sv(Y_DECK + 3.65), 0.26, 0.020, hex_col="#b81c14")
-    srb_tex.draw_nasa_meatball(u_pos, sv(Y_SRB_TOP - 1.15), 0.055, 0.0118)
+# Keep booster finish free of agency logos/flags to comply with competition media rules
 
 MATS["srb_pbr"] = srb_tex.build_material("SLS_SRB_PBR", normal_strength=2.0)
 
@@ -589,8 +586,6 @@ set_origin(ORION, (0, (Y_OSA1 + Y_CM1) / 2, 0))
 fair_tex = PBRCanvas(512, 512, base_hex="#efeee7", rough=0.44, metal=0.0)
 fair_tex.add_panel_grid(0.05, 0.95, n_cols=4, n_rows=4, color_var=0.015, seam_px=2)
 fair_tex.paint_band(0.84, 0.92, "#17191d", rough=0.55)
-fair_tex.draw_nasa_meatball(0.35, 0.56, 0.12, 0.12)
-fair_tex.draw_us_flag(0.66, 0.56, 0.18, 0.11)
 MATS["fairing_pbr"] = fair_tex.build_material("SLS_Fairing_PBR", normal_strength=1.8)
 
 for k in range(3):
