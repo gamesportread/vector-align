@@ -70,3 +70,12 @@ Local delivery only. Do not publish this project to ChatGPT Sites.
 `npm run build` outputs a static `dist/` directory. Serve it over HTTPS with HTML fallback to `index.html`. Cache hashed assets long term; avoid long-lived caching of `index.html`, `sw.js`, and `manifest.webmanifest`. The PWA precaches core scene resources and only offers updates after leaving a flight. The app needs no API key, account or backend.
 
 See [sources and scientific limits](docs/SOURCES.md) and the [acceptance / learner-study checklist](docs/ACCEPTANCE.md). Physical-device testing, target-user testing and 2026 competition qualification require separate verification.
+
+## Super Intelligence (SI) & AI Usage Disclosure
+
+In accordance with NASA Space Apps Challenge transparency guidelines:
+
+- **Code, Documentation & Translation**: Large Language Model (LLM) assistants were used during development to assist with coding, debugging, refactoring, documentation, and multilingual UI text translation (`src/i18n/messages.ts`).
+- **Data / Texture Preprocessing**: `scripts/generate-earth-patch.py` uses the pre-trained `FSRCNN_x4` TensorFlow super-resolution model (`Saafke/FSRCNN_Tensorflow`) to upscale a regional crop of the NASA Earth Observatory Blue Marble base map into `public/textures/earth_patch_4096.jpg`.
+- **Runtime Simulation & Audio**: All orbital, ascent, departure, and reentry physics run deterministically without runtime AI/ML inference, and launch soundscapes (`src/components/liftoff/liftoffAudio.ts`) are synthesized procedurally via the Web Audio API.
+- **Non-Endorsement**: This is an independent educational project. NASA does not endorse it.
