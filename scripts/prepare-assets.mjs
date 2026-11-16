@@ -6,7 +6,7 @@ import sharp from 'sharp';
 await fs.mkdir('public/icons',{recursive:true});
 const svg=await fs.readFile('public/favicon.svg');
 for(const size of [192,512])await sharp(svg).resize(size,size).png().toFile(`public/icons/icon-${size}.png`);
-await sharp(svg).resize(350,350).extend({top:81,bottom:81,left:81,right:81,background:'#b3f56b'}).png().toFile('public/icons/maskable-512.png');
+await sharp(svg).resize(350,350).flatten({background:'#0b1030'}).extend({top:81,bottom:81,left:81,right:81,background:'#0b1030'}).png().toFile('public/icons/maskable-512.png');
 if(!process.argv[2])process.exit(0);
 const input=await fs.readFile(process.argv[2]);
 if(input.readUInt32LE(8)!==input.length)throw new Error('Source GLB download is incomplete');
